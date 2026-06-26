@@ -33,12 +33,12 @@ Accueil principal dans `app/page.tsx` :
 - `BookingWizard`
 - `FleetSection`
 - `ReviewsSection`
-- `ZonesSection`
 - `FAQSection`
 - `ContactSection`
 
 Pages legales :
 
+- `app/destinations/page.tsx`
 - `app/services/page.tsx`
 - `app/mentions-legales/page.tsx`
 - `app/politique-confidentialite/page.tsx`
@@ -98,6 +98,8 @@ Etapes :
 
 Apres envoi : message de succes avec coche verte.
 
+L'ecran de succes du wizard contient un bouton "Envoyer une nouvelle demande" qui reinitialise le formulaire a l'etape 1 avec Eco + transport medical conventionne par defaut.
+
 ## Formulaires
 
 Reservation/devis :
@@ -111,6 +113,14 @@ Contact simple :
 
 - Section : `components/sections/ContactSection.tsx`
 - API route : `app/api/contact/route.ts`
+
+Demande destinations / partenaires taxi :
+
+- Page : `app/destinations/page.tsx`
+- Formulaire : `components/sections/DestinationsRequestForm.tsx`
+- API route : `app/api/destination-request/route.ts`
+- Objectif : retirer le bloc zones de la home et proposer une page dediee ou le client choisit une zone, Eco/Van, le besoin et ses coordonnees. Certaines zones peuvent etre traitees via des taxis partenaires.
+- Nombre de passagers limite par vehicule dans les formulaires : Eco de 1 a 4, Van de 1 a 8, avec validation cote API.
 
 ## SEO
 
@@ -167,6 +177,8 @@ Liens Google a modifier dans `data/site.ts` :
 
 La homepage affiche maintenant un carrousel d'avis dans `components/sections/ReviewsSection.tsx` : 1 carte visible sur mobile, 3 cartes visibles sur desktop, avec fleches precedent/suivant. La page complete des avis est `app/avis/page.tsx`. Le bouton "Laisser un avis Google" utilise `https://maps.app.goo.gl/wt6SdhRKcfYZG41v6`.
 
+Le site affiche le total Google officiel depuis `data/site.ts` : `googleReviewCount: 113` et `googleRating: 5.0`. Les 9 objets dans `data/reviews.ts` sont des exemples selectionnes pour le carrousel et la page avis, pas le total reel.
+
 ## Email
 
 Templates :
@@ -210,6 +222,7 @@ Modele : `.env.local.example`.
 - FAQ : `data/faq.ts`
 - Hero : `components/sections/HeroSection.tsx`
 - Page services detaillee : `app/services/page.tsx`
+- Page destinations et partenaires : `app/destinations/page.tsx`
 - Contact : `components/sections/ContactSection.tsx`
 - Emails : `emails`
 - Tracking : `lib/tracking.ts`
@@ -254,3 +267,11 @@ Amelioration CTA services homepage : dans `ServicesSection`, chaque carte garde 
 Ajustement services homepage : suppression de la numerotation 01-06, reduction de la hauteur image, suppression du `min-h` fixe trop grand, titres replaces dans la partie blanche pour une meilleure lisibilite, descriptions compactes et boutons maintenus alignes par ligne sans grand espace blanc.
 
 Ajout avis Google : creation de la page `/avis`, transformation de la section avis homepage en carrousel responsive, ajout du bouton "Laisser un avis Google" avec le lien Maps fourni, menu Avis dirige vers `/avis`, sitemap mis a jour.
+
+Reservation : ajout d'un bouton "Envoyer une nouvelle demande" sur l'ecran de succes du `BookingWizard` pour reinitialiser le formulaire et permettre une nouvelle demande.
+
+Avis : le total affiche est maintenant 113 avis Google via `siteConfig.googleReviewCount`, au lieu de compter seulement les 9 avis exemples presents dans `data/reviews.ts`.
+
+Destinations : retrait du bloc `ZonesSection` de la home. Creation de `/destinations` avec liste des zones, explication des partenariats taxis et formulaire dedie zone + vehicule Eco/Van + besoin + coordonnees. Le menu "Destinations" pointe vers `/destinations`, le sitemap inclut cette route.
+
+Formulaires : limite passagers ajoutee selon le vehicule selectionne. Eco accepte 1 a 4 passagers, Van accepte 1 a 8 passagers dans le formulaire destinations et dans le wizard reservation, avec validation API.

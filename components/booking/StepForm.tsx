@@ -14,6 +14,7 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const service = draft.service || "medical";
   const submitLabel = service === "airport" || service === "business" ? "Demander un devis" : "Reserver / Demander un devis";
+  const passengerMax = draft.vehicle === "van" ? 8 : 4;
 
   const fields = useMemo(() => getFields(service), [service]);
 
@@ -51,8 +52,15 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
           </label>
         ) : (
           <label key={field.name} className="grid gap-2 text-sm font-semibold">
-            {field.label}
-            <input name={field.name} type={field.type || "text"} defaultValue={String(draft[field.name as keyof BookingDraft] || "")} className="h-12 rounded-md border border-neutral-200 px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20" />
+            {field.name === "passengers" ? `${field.label} (${draft.vehicle === "van" ? "1 a 8" : "1 a 4"})` : field.label}
+            <input
+              name={field.name}
+              type={field.type || "text"}
+              min={field.name === "passengers" ? 1 : undefined}
+              max={field.name === "passengers" ? passengerMax : undefined}
+              defaultValue={String(draft[field.name as keyof BookingDraft] || "")}
+              className="h-12 rounded-md border border-neutral-200 px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20"
+            />
             {errors[field.name] ? <span className="text-xs font-medium text-red-600">{errors[field.name]}</span> : null}
           </label>
         ))}

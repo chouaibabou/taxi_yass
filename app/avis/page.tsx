@@ -42,7 +42,7 @@ export default function AvisPage() {
               <h2 className="mt-2 text-3xl font-black text-taxi-black">Tous les avis clients</h2>
             </div>
             <div className="rounded-lg bg-taxi-cream p-4 text-sm text-neutral-700">
-              <strong>Google rating score: 5.0</strong> of 5, based on <strong>{reviews.length} reviews</strong>
+              <strong>Google rating score: {siteConfig.googleRating.toFixed(1)}</strong> of 5, based on <strong>{siteConfig.googleReviewCount} reviews</strong>
             </div>
           </div>
 

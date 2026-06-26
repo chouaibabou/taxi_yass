@@ -7,6 +7,7 @@ import { FleetId } from "@/data/fleet";
 import { BookingPayload } from "@/lib/booking-schema";
 import { trackConversion } from "@/lib/tracking";
 import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import { StepVehicle } from "@/components/booking/StepVehicle";
 import { StepService } from "@/components/booking/StepService";
 import { StepForm } from "@/components/booking/StepForm";
@@ -24,6 +25,12 @@ export function BookingWizard() {
   const [draft, setDraft] = useState<BookingDraft>({ vehicle: "eco", service: "medical" });
   const [sent, setSent] = useState(false);
   const currentLabel = useMemo(() => stepLabels[step - 1], [step]);
+
+  function resetWizard() {
+    setDraft({ vehicle: "eco", service: "medical" });
+    setStep(1);
+    setSent(false);
+  }
 
   async function send() {
     const response = await fetch("/api/booking", {
@@ -66,6 +73,9 @@ export function BookingWizard() {
               <p className="max-w-2xl leading-7 text-neutral-700">
                 Merci, nous avons bien recu votre demande. Notre equipe va l&apos;etudier et vous repondra dans les plus brefs delais. Un email recapitulatif vous a ete envoye.
               </p>
+              <Button type="button" onClick={resetWizard} className="mt-2">
+                Envoyer une nouvelle demande
+              </Button>
             </div>
           ) : (
             <>

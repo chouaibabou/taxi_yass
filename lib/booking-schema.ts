@@ -1,5 +1,15 @@
 import { z } from "zod";
 
+function validatePassengerCount(vehicle: "eco" | "van", passengers?: string) {
+  if (!passengers) {
+    return true;
+  }
+
+  const count = Number(passengers);
+  const max = vehicle === "van" ? 8 : 4;
+  return Number.isInteger(count) && count >= 1 && count <= max;
+}
+
 export const bookingSchema = z.object({
   vehicle: z.enum(["eco", "van"]),
   service: z.enum(["medical", "airport", "event", "business"]),
@@ -26,6 +36,14 @@ export const bookingSchema = z.object({
   invoiceNeeded: z.string().optional(),
   tripFrequency: z.string().optional(),
   comment: z.string().optional()
+}).superRefine((data, ctx) => {
+  if (!validatePassengerCount(data.vehicle, data.passengers)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["passengers"],
+      message: data.vehicle === "van" ? "Le Van accepte entre 1 et 8 passagers." : "Le vehicule Eco accepte entre 1 et 4 passagers."
+    });
+  }
 });
 
 export type BookingPayload = z.infer<typeof bookingSchema>;

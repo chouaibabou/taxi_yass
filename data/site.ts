@@ -11,6 +11,8 @@ export const siteConfig = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://yastaxii.fr",
   googleReviewsUrl: "https://maps.app.goo.gl/wt6SdhRKcfYZG41v6",
   googleReviewWriteUrl: "https://maps.app.goo.gl/wt6SdhRKcfYZG41v6",
+  googleReviewCount: 113,
+  googleRating: 4.9,
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Yas%27Taxii%20Chateau-Thierry",
   nav: [
     { label: "Accueil", href: "/#accueil" },
@@ -18,7 +20,7 @@ export const siteConfig = {
     { label: "Reserver", href: "/#reserver" },
     { label: "Flotte", href: "/#flotte" },
     { label: "Avis", href: "/avis" },
-    { label: "Zones", href: "/#zones" },
+    { label: "Destinations", href: "/destinations" },
     { label: "FAQ", href: "/#faq" },
     { label: "Contact", href: "/#contact" }
   ],

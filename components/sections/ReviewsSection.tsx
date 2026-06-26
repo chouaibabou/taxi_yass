@@ -27,7 +27,7 @@ export function ReviewsSection() {
           <div className="max-w-3xl">
             <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Avis clients</p>
             <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Une relation de confiance, trajet apres trajet</h2>
-            <p className="mt-4 text-neutral-600">Note Google 5.0/5 basee sur {reviews.length} avis clients.</p>
+            <p className="mt-4 text-neutral-600">Note Google {siteConfig.googleRating.toFixed(1)}/5 basee sur {siteConfig.googleReviewCount} avis clients.</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/avis" variant="dark">
@@ -64,7 +64,7 @@ export function ReviewsSection() {
         </div>
 
         <div className="mt-5 text-center text-sm text-neutral-700">
-          <strong>Google rating score: 5.0</strong> of 5, based on <strong>{reviews.length} reviews</strong>
+          <strong>Google rating score: {siteConfig.googleRating.toFixed(1)}</strong> of 5, based on <strong>{siteConfig.googleReviewCount} reviews</strong>
         </div>
       </div>
     </section>
