@@ -275,3 +275,7 @@ Avis : le total affiche est maintenant 113 avis Google via `siteConfig.googleRev
 Destinations : retrait du bloc `ZonesSection` de la home. Creation de `/destinations` avec liste des zones, explication des partenariats taxis et formulaire dedie zone + vehicule Eco/Van + besoin + coordonnees. Le menu "Destinations" pointe vers `/destinations`, le sitemap inclut cette route.
 
 Formulaires : limite passagers ajoutee selon le vehicule selectionne. Eco accepte 1 a 4 passagers, Van accepte 1 a 8 passagers dans le formulaire destinations et dans le wizard reservation, avec validation API.
+
+Corrections contenu Yas'Taxii : textes alignes sur le secteur reel Gandelu, Crezancy et agglomeration de Chateau-Thierry. Les libelles visibles utilisent maintenant "Taxi" au lieu de "Eco" pour le vehicule 1 a 4 passagers, tout en gardant l'id technique `eco`. Le transport medical est ecrit "conventionne" avec accent dans l'interface. La page destinations est limitee a Taxi Crezancy, Taxi Gandelu, Taxi Chateau-Thierry et Taxi Soissons, avec mention des chauffeurs/taxis partenaires. Le formulaire medical propose Hopital de jour, Consultation et Autre avec champ de precision. La reservation affiche les equipements de confort disponibles pour longs trajets.
+
+Reservation : la prestation particulier/evenementiel du wizard est renommee "Course classique de taxi ou mise a disposition" avec un texte couvrant l'agglomeration de Chateau-Thierry, le Sud de l'Aisne, CDG, les gares SNCF de Paris, Reims et villes voisines.

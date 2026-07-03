@@ -36,12 +36,12 @@ export function ContactSection() {
         </div>
         <Card className="p-5 text-taxi-black">
           {sent ? (
-            <div className="rounded-md bg-emerald-50 p-5 font-bold text-emerald-700">Votre message a bien ete envoye.</div>
+            <div className="rounded-md bg-emerald-50 p-5 font-bold text-emerald-700">Votre message a bien été envoyé.</div>
           ) : (
             <form className="grid gap-4" onSubmit={onSubmit}>
-              <Input name="fullName" label="Nom et prenom" required />
+              <Input name="fullName" label="Nom et prénom" required />
               <Input name="email" type="email" label="Email" required />
-              <Input name="phone" label="Telephone" required />
+              <Input name="phone" label="Téléphone" required />
               <label className="grid gap-2 text-sm font-semibold">
                 Message
                 <textarea name="message" required rows={5} className="rounded-md border border-neutral-200 px-4 py-3 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20" />

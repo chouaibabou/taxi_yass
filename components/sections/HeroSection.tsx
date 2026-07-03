@@ -4,12 +4,12 @@ import { siteConfig, whatsappUrl } from "@/data/site";
 import { ButtonLink } from "@/components/ui/Button";
 
 const highlights = [
-  { label: "Ponctualite", Icon: Clock },
+  { label: "Ponctualité", Icon: Clock },
   { label: "Confort", Icon: BadgeCheck },
-  { label: "Securite", Icon: ShieldCheck },
+  { label: "Sécurité", Icon: ShieldCheck },
   { label: "24h/24 - 7j/7", Icon: Clock },
-  { label: "Transport medical conventionne", Icon: BadgeCheck },
-  { label: "Gares et aeroports", Icon: Plane },
+  { label: "Transport médical conventionné", Icon: BadgeCheck },
+  { label: "Gares et aéroports", Icon: Plane },
   { label: "Paiement CB si besoin", Icon: Banknote },
   { label: "Devis rapide", Icon: MapPin }
 ];
@@ -22,16 +22,16 @@ export function HeroSection() {
       <div className="relative mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl content-center px-4 py-20 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="mb-5 inline-flex rounded-md bg-taxi-gold px-3 py-2 text-xs font-black uppercase tracking-wide text-taxi-black">
-            Chateau-Thierry - Aisne - Toutes distances
+            De toute l&apos;agglomération de Château-Thierry vers toutes destinations
           </p>
           <h1 className="text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
-            Votre taxi conventionne, gares, aeroports et toutes distances
+            Votre taxi conventionné, gares, aéroports et toutes distances
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-white/80">
-            Transport dans l&apos;Aisne et departements voisins, avec reservation rapide pour trajets medicaux, transferts, courses privees et deplacements professionnels.
+            Taxi conventionné de Gandelu, Crézancy et toute l&apos;agglomération de Château-Thierry pour trajets médicaux, transferts, courses privées et déplacements professionnels.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href="/#reserver">Reserver maintenant</ButtonLink>
+            <ButtonLink href="/#reserver">Réserver maintenant</ButtonLink>
             <ButtonLink href="/#reserver" variant="secondary">Demander un devis</ButtonLink>
             <ButtonLink href={siteConfig.phoneHref} variant="dark" className="border border-white/20">Appeler</ButtonLink>
             <ButtonLink href={whatsappUrl()} variant="whatsapp" target="_blank">WhatsApp</ButtonLink>

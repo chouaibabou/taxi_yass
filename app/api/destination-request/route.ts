@@ -21,7 +21,7 @@ const destinationRequestSchema = z.object({
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       path: ["passengers"],
-      message: data.vehicle === "van" ? "Le Van accepte entre 1 et 8 passagers." : "Le vehicule Eco accepte entre 1 et 4 passagers."
+      message: data.vehicle === "van" ? "Le Van accepte entre 1 et 8 passagers." : "Le Taxi accepte entre 1 et 4 passagers."
     });
   }
 });
