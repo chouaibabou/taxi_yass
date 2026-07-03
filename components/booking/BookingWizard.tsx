@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2 } from "lucide-react";
+import { Baby, Bike, Cable, CheckCircle2, CircleDot, PlugZap, Snowflake, Sofa } from "lucide-react";
 import { useMemo, useState } from "react";
 import { ServiceId } from "@/data/services";
 import { FleetId } from "@/data/fleet";
@@ -18,7 +18,18 @@ export type BookingDraft = Partial<BookingPayload> & {
   service?: ServiceId;
 };
 
-const stepLabels = ["Vehicule", "Prestation", "Informations", "Recapitulatif"];
+const stepLabels = ["Véhicule", "Prestation", "Informations", "Récapitulatif"];
+
+const comfortItems = [
+  { label: "Siège bébé 360° convertible en cosy", Icon: Baby },
+  { label: "Rehausseur", Icon: CircleDot },
+  { label: "Cosy bébé", Icon: Baby },
+  { label: "Oreiller de voyage", Icon: Sofa },
+  { label: "Glacière à compression (-20°)", Icon: Snowflake },
+  { label: "Prise 220V", Icon: PlugZap },
+  { label: "Attelage", Icon: Cable },
+  { label: "Porte-vélos jusqu'à 3 vélos", Icon: Bike }
+];
 
 export function BookingWizard() {
   const [step, setStep] = useState(1);
@@ -51,9 +62,27 @@ export function BookingWizard() {
     <section id="reserver" className="bg-taxi-black py-20 text-white">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Reservation / devis</p>
-          <h2 className="mt-2 text-3xl font-black sm:text-4xl">Un parcours simple en 4 etapes</h2>
-          <p className="mt-4 text-white/70">Choisissez votre vehicule, la prestation, completez les informations utiles et validez le recapitulatif avant envoi.</p>
+          <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Réservation / devis</p>
+          <h2 className="mt-2 text-3xl font-black sm:text-4xl">Un parcours simple en 4 étapes</h2>
+          <p className="mt-4 text-white/70">Choisissez votre véhicule, la prestation, complétez les informations utiles et validez le récapitulatif avant envoi.</p>
+        </div>
+
+        <div className="mt-8 rounded-lg border border-white/10 bg-white/[0.06] p-5">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Confort à bord</p>
+              <h3 className="mt-1 text-2xl font-black">Équipements disponibles pour les longs trajets</h3>
+            </div>
+            <p className="text-sm text-white/65">À préciser dans le formulaire selon votre besoin.</p>
+          </div>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {comfortItems.map(({ label, Icon }) => (
+              <div key={label} className="flex min-h-16 items-center gap-3 rounded-md bg-taxi-black/60 p-3 text-sm font-bold text-white/85">
+                <Icon className="shrink-0 text-taxi-gold" size={20} />
+                {label}
+              </div>
+            ))}
+          </div>
         </div>
 
         <Card className="mt-10 border-white/10 bg-white p-4 text-taxi-black sm:p-6">
@@ -69,9 +98,9 @@ export function BookingWizard() {
           {sent ? (
             <div className="grid justify-items-center gap-5 py-14 text-center">
               <CheckCircle2 className="text-taxi-green" size={78} />
-              <h3 className="text-2xl font-black">Votre demande a bien ete envoyee !</h3>
+              <h3 className="text-2xl font-black">Votre demande a bien été envoyée !</h3>
               <p className="max-w-2xl leading-7 text-neutral-700">
-                Merci, nous avons bien recu votre demande. Notre equipe va l&apos;etudier et vous repondra dans les plus brefs delais. Un email recapitulatif vous a ete envoye.
+                Merci, nous avons bien reçu votre demande. Notre équipe va l&apos;étudier et vous répondra dans les plus brefs délais. Un email récapitulatif vous a été envoyé.
               </p>
               <Button type="button" onClick={resetWizard} className="mt-2">
                 Envoyer une nouvelle demande
@@ -79,7 +108,7 @@ export function BookingWizard() {
             </div>
           ) : (
             <>
-              <div className="mb-5 text-sm font-black uppercase tracking-wide text-neutral-500">Etape {step} - {currentLabel}</div>
+              <div className="mb-5 text-sm font-black uppercase tracking-wide text-neutral-500">Étape {step} - {currentLabel}</div>
               {step === 1 ? <StepVehicle draft={draft} setDraft={setDraft} onNext={() => setStep(2)} /> : null}
               {step === 2 ? <StepService draft={draft} setDraft={setDraft} onBack={() => setStep(1)} onNext={() => setStep(3)} /> : null}
               {step === 3 ? <StepForm draft={draft} setDraft={setDraft} onBack={() => setStep(2)} onNext={() => setStep(4)} /> : null}

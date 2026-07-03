@@ -12,8 +12,8 @@ export function ZonesSection() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
           <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Zones desservies</p>
-          <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Taxi local dans l&apos;Aisne et vers les grands axes</h2>
-          <p className="mt-4 text-neutral-700">Depart depuis Chateau-Thierry et alentours pour gares, aeroports, rendez-vous medicaux, entreprises et trajets toutes distances.</p>
+          <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Taxi local dans l&apos;agglomération de Château-Thierry</h2>
+          <p className="mt-4 text-neutral-700">Départ depuis Gandelu, Crézancy, Château-Thierry et secteurs voisins pour gares, aéroports, rendez-vous médicaux, entreprises et trajets toutes distances.</p>
           <ButtonLink href={siteConfig.mapsUrl} target="_blank" variant="dark" className="mt-6" onClick={() => trackConversion("maps_click")}>Ouvrir Google Maps</ButtonLink>
         </div>
         <div className="relative min-h-80 overflow-hidden rounded-lg bg-taxi-black p-6 text-white">

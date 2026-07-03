@@ -74,7 +74,7 @@ export function DestinationsRequestForm() {
       return;
     }
 
-    setError("Merci de verifier les champs obligatoires.");
+    setError("Merci de vérifier les champs obligatoires.");
   }
 
   return (
@@ -84,7 +84,7 @@ export function DestinationsRequestForm() {
           <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Destinations partenaires</p>
           <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Choisissez une zone, nous organisons la demande</h2>
           <p className="mt-4 leading-7 text-neutral-700">
-            Pour certains secteurs, Yas&apos;Taxii peut organiser la demande avec des taxis partenaires. Selectionnez la destination, le vehicule souhaite et votre besoin : nous recevons votre message pour vous repondre rapidement.
+            Yas&apos;Taxii travaille avec d&apos;autres chauffeurs partenaires sur certains secteurs. Sélectionnez la ville, le véhicule souhaité et votre besoin : la demande arrive avec la zone choisie pour organiser rapidement la réservation.
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -106,9 +106,9 @@ export function DestinationsRequestForm() {
           {sent ? (
             <div className="grid justify-items-center gap-5 py-12 text-center">
               <CheckCircle2 className="text-taxi-green" size={72} />
-              <h3 className="text-2xl font-black text-taxi-black">Votre demande de destination a bien ete envoyee !</h3>
+              <h3 className="text-2xl font-black text-taxi-black">Votre demande de destination a bien été envoyée !</h3>
               <p className="max-w-xl leading-7 text-neutral-700">
-                Nous avons bien recu votre demande pour {formState.zone}. Nous allons l&apos;etudier et vous repondre rapidement.
+                Nous avons bien reçu votre demande pour {formState.zone}. Nous allons l&apos;étudier et vous répondre rapidement.
               </p>
               <Button type="button" onClick={() => setSent(false)}>
                 Envoyer une nouvelle demande
@@ -119,14 +119,14 @@ export function DestinationsRequestForm() {
               <div className="rounded-lg bg-taxi-black p-4 text-white">
                 <div className="flex items-center gap-3 text-sm font-black text-taxi-gold">
                   <MapPinned size={22} />
-                  Zone selectionnee
+                  Zone sélectionnée
                 </div>
                 <div className="mt-2 text-2xl font-black">{formState.zone}</div>
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <label className="grid gap-2 text-sm font-semibold text-taxi-black">
-                  Choisir le vehicule
+                  Choisir le véhicule
                   <select
                     value={formState.vehicle}
                     onChange={(event) => updateVehicle(event.target.value as "eco" | "van")}
@@ -157,13 +157,13 @@ export function DestinationsRequestForm() {
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
-                <Input name="fullName" label="Nom et prenom" required />
+                <Input name="fullName" label="Nom et prénom" required />
                 <Input name="email" type="email" label="Email" required />
-                <Input name="phone" label="Telephone" required />
+                <Input name="phone" label="Téléphone" required />
                 <Input
                   name="passengers"
                   type="number"
-                  label={`Nombre de passagers (${formState.vehicle === "eco" ? "1 a 4" : "1 a 8"})`}
+                  label={`Nombre de passagers (${formState.vehicle === "eco" ? "1 à 4" : "1 à 8"})`}
                   min={1}
                   max={passengerMax}
                   value={formState.passengers}
@@ -171,8 +171,8 @@ export function DestinationsRequestForm() {
                   required
                 />
                 <Input name="pickupAddress" label="Adresse de prise en charge" required />
-                <Input name="destinationAddress" label="Adresse d'arrivee" required />
-                <Input name="dateTime" type="datetime-local" label="Date et heure souhaitees" />
+                <Input name="destinationAddress" label="Adresse d'arrivée" required />
+                <Input name="dateTime" type="datetime-local" label="Date et heure souhaitées" />
               </div>
 
               <label className="grid gap-2 text-sm font-semibold text-taxi-black">

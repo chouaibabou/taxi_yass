@@ -11,8 +11,8 @@ import { pageMetadata } from "@/lib/metadata";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = pageMetadata(
-  "Yas'Taxii - Taxi conventionne Chateau-Thierry, Aisne, gares et aeroports",
-  "Taxi conventionne a Chateau-Thierry pour transport medical, gares, aeroports CDG, Orly, Beauvais, courses privees et professionnelles dans l'Aisne."
+  "Yas'Taxii - Taxi conventionné Gandelu, Crézancy et Château-Thierry",
+  "Taxi conventionné de Gandelu, Crézancy et toute l'agglomération de Château-Thierry pour transport médical, gares, aéroports CDG, Orly, Beauvais, courses privées et professionnelles."
 );
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

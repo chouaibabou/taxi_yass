@@ -1,42 +1,42 @@
 export const faq = [
   {
-    question: "Comment reserver un taxi ?",
+    question: "Comment réserver un taxi ?",
     answer:
-      "Vous pouvez reserver par telephone, WhatsApp ou via le formulaire de reservation/devis. Nous confirmons ensuite les informations utiles au trajet."
+      "Vous pouvez réserver par téléphone, WhatsApp ou via le formulaire de réservation/devis. Nous confirmons ensuite les informations utiles au trajet."
   },
   {
-    question: "Le transport medical est-il pris en charge ?",
+    question: "Le transport médical est-il pris en charge ?",
     answer:
-      "Yas'Taxii propose du transport medical conventionne. La prise en charge depend de votre situation et de vos documents de transport. Aucun diagnostic medical n'est demande sur le site."
+      "Yas'Taxii propose du transport médical conventionné. La prise en charge dépend de votre situation et de vos documents de transport. Aucun diagnostic médical n'est demandé sur le site."
   },
   {
-    question: "Quels aeroports desservez-vous ?",
+    question: "Quels aéroports desservez-vous ?",
     answer:
-      "Nous desservons notamment Paris Charles-de-Gaulle, Orly, Beauvais, ainsi que les gares et villes voisines depuis l'Aisne."
+      "Nous desservons notamment Paris Charles-de-Gaulle, Orly, Beauvais, ainsi que les gares et villes voisines depuis l'agglomération de Château-Thierry et le département de l'Aisne."
   },
   {
     question: "Quels moyens de paiement acceptez-vous ?",
     answer:
-      "Le paiement peut etre organise selon le trajet. La carte bancaire est prevue si besoin, a confirmer lors de la reservation."
+      "Le paiement peut être organisé selon le trajet. La carte bancaire est prévue si besoin, à confirmer lors de la réservation."
   },
   {
     question: "Puis-je demander un devis ?",
     answer:
-      "Oui. Le formulaire permet de demander un devis clair avant validation, notamment pour les aeroports, longues distances et trajets professionnels."
+      "Oui. Le formulaire permet de demander un devis clair avant validation, notamment pour les aéroports, longues distances et trajets professionnels."
   },
   {
     question: "Proposez-vous des trajets professionnels ?",
     answer:
-      "Oui, nous accompagnons les entreprises pour des courses ponctuelles ou recurrentes, avec possibilite de facture."
+      "Oui, nous accompagnons les entreprises pour des courses ponctuelles ou récurrentes, avec possibilité de facture."
   },
   {
-    question: "Puis-je reserver pour plusieurs personnes ?",
+    question: "Puis-je réserver pour plusieurs personnes ?",
     answer:
-      "Oui. Choisissez Eco jusqu'a 4 passagers ou Van jusqu'a 8 passagers selon le nombre de personnes et de bagages."
+      "Oui. Choisissez Taxi jusqu'à 4 passagers ou Van jusqu'à 8 passagers selon le nombre de personnes et de bagages."
   },
   {
     question: "Comment modifier ou annuler une demande ?",
     answer:
-      "Contactez-nous rapidement par telephone ou WhatsApp avec les informations de votre demande pour modifier ou annuler votre trajet."
+      "Contactez-nous rapidement par téléphone ou WhatsApp avec les informations de votre demande pour modifier ou annuler votre trajet."
   }
 ];

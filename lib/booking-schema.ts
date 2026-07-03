@@ -18,11 +18,12 @@ export const bookingSchema = z.object({
   contactName: z.string().optional(),
   email: z.string().email("Email invalide").optional().or(z.literal("")),
   businessEmail: z.string().email("Email invalide").optional().or(z.literal("")),
-  phone: z.string().min(8, "Telephone obligatoire"),
+  phone: z.string().min(8, "Téléphone obligatoire"),
   pickupAddress: z.string().min(3, "Adresse de prise en charge obligatoire"),
   destinationAddress: z.string().optional(),
   eventAddress: z.string().optional(),
   appointmentReason: z.string().optional(),
+  appointmentReasonOther: z.string().optional(),
   appointmentDate: z.string().optional(),
   appointmentTime: z.string().optional(),
   departureDateTime: z.string().optional(),
@@ -41,7 +42,14 @@ export const bookingSchema = z.object({
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       path: ["passengers"],
-      message: data.vehicle === "van" ? "Le Van accepte entre 1 et 8 passagers." : "Le vehicule Eco accepte entre 1 et 4 passagers."
+      message: data.vehicle === "van" ? "Le Van accepte entre 1 et 8 passagers." : "Le Taxi accepte entre 1 et 4 passagers."
+    });
+  }
+  if (data.service === "medical" && data.appointmentReason === "Autre" && !String(data.appointmentReasonOther || "").trim()) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["appointmentReasonOther"],
+      message: "Merci de préciser le motif du rendez-vous."
     });
   }
 });

@@ -4,116 +4,116 @@ export const services = [
   {
     id: "medical",
     slug: "transport-medical-conventionne",
-    title: "Transport medical conventionne",
-    shortTitle: "Taxi conventionne",
-    description: "Transport assis professionnalise pour consultations, hospitalisations, hopitaux de jour et rendez-vous medicaux.",
+    title: "Transport médical conventionné",
+    shortTitle: "Taxi conventionné",
+    description: "Transport assis professionnalisé pour consultations, hospitalisations, hôpitaux de jour et rendez-vous médicaux.",
     details:
-      "Yas'Taxii accompagne les patients dans leurs trajets medicaux conventionnes depuis Chateau-Thierry et l'Aisne. Le trajet est organise avec ponctualite, discretion et confort, sans demander de donnees medicales sensibles.",
+      "Yas'Taxii accompagne les patients dans leurs trajets médicaux conventionnés depuis Gandelu, Crézancy et toute l'agglomération de Château-Thierry. Le trajet est organisé avec ponctualité, discrétion et confort, sans demander de données médicales sensibles.",
     image: "/images/service-medical.jpg",
     Icon: Stethoscope,
     cta: "Voir le service",
-    keywords: ["taxi conventionne Chateau-Thierry", "transport medical conventionne Aisne", "taxi VSL conventionne Aisne"]
+    keywords: ["Taxi conventionné agglomération de Château-Thierry", "Transport médical conventionné département de l'Aisne", "Taxi conventionné Gandelu Crézancy"]
   },
   {
     id: "airport",
     slug: "transfert-aeroports",
-    title: "Transfert aeroports",
-    shortTitle: "Aeroports",
-    description: "Navette taxi vers CDG, Orly, Beauvais et les aeroports parisiens, avec prise en charge organisee.",
+    title: "Transfert aéroports",
+    shortTitle: "Aéroports",
+    description: "Navette taxi vers CDG, Orly, Beauvais et les aéroports parisiens, avec prise en charge organisée.",
     details:
-      "Pour un depart ou une arrivee aeroport, le trajet est prepare selon votre horaire, vos bagages et le nombre de passagers. Yas'Taxii dessert notamment CDG, Orly et Beauvais depuis Chateau-Thierry et les communes voisines.",
+      "Pour un départ ou une arrivée aéroport, le trajet est préparé selon votre horaire, vos bagages et le nombre de passagers. Yas'Taxii dessert notamment CDG, Orly et Beauvais depuis l'agglomération de Château-Thierry et les communes voisines.",
     image: "/images/service-aeroport.webp",
     Icon: Plane,
     cta: "Voir le service",
-    keywords: ["taxi aeroport CDG", "taxi aeroport Orly", "taxi Beauvais", "navette aeroport Aisne"]
+    keywords: ["Taxi aéroport CDG", "Taxi aéroport Orly", "Taxi Beauvais", "Navette aéroport département de l'Aisne"]
   },
   {
     id: "stations",
     slug: "transfert-gares",
     title: "Transfert gares",
     shortTitle: "Gares",
-    description: "Taxi vers les gares de Chateau-Thierry, Paris, Reims, Marne-la-Vallee et autres correspondances.",
+    description: "Taxi vers les gares de Château-Thierry, Paris, Reims, Marne-la-Vallée et autres correspondances.",
     details:
-      "Yas'Taxii facilite vos correspondances train avec une prise en charge claire, une aide pour les bagages si besoin et un horaire adapte a votre depart ou arrivee.",
+      "Yas'Taxii facilite vos correspondances train avec une prise en charge claire, une aide pour les bagages si besoin et un horaire adapté à votre départ ou arrivée.",
     image: "/images/service-gares.webp",
     Icon: TrainFront,
     cta: "Voir le service",
-    keywords: ["taxi gare Chateau-Thierry", "taxi gare de Lyon", "transfert gare Aisne"]
+    keywords: ["Taxi gare Château-Thierry", "Taxi gare de Lyon", "Transfert gare département de l'Aisne"]
   },
   {
     id: "business",
     slug: "transport-professionnel",
     title: "Professionnel / entreprise",
     shortTitle: "Professionnels",
-    description: "Trajets d'entreprise, rendez-vous, seminaires, clients VIP, facture et organisation recurrente.",
+    description: "Taxi pour trajet professionnel, rendez-vous, séminaires, clients VIP, facture et organisation récurrente.",
     details:
-      "Pour les entreprises, Yas'Taxii propose une solution fiable pour les rendez-vous, transferts collaborateurs, accueils clients, seminaires et trajets recurrents avec demande de facture possible.",
+      "Pour les entreprises, Yas'Taxii propose une solution fiable pour les rendez-vous, transferts collaborateurs, accueils clients, séminaires et trajets récurrents avec demande de facture possible.",
     image: "/images/service-professionnel.webp",
     Icon: Building2,
     cta: "Voir le service",
-    keywords: ["taxi professionnel Aisne", "taxi entreprise Chateau-Thierry", "transport professionnel"]
+    keywords: ["Taxi pour trajet professionnel", "Taxi entreprise", "Transport professionnel"]
   },
   {
     id: "tourism",
     slug: "tourisme-et-toutes-distances",
-    title: "Tourisme et toutes distances",
+    title: "Tourisme et mobilité",
     shortTitle: "Tourisme",
-    description: "Trajets touristiques, Paris, monuments, evenements, sorties et courses longues distances.",
+    description: "Taxi pour visites, sorties, Paris, Reims, vignes de champagne et trajets touristiques.",
     details:
-      "Besoin d'un taxi pour visiter Paris, rejoindre un evenement, accompagner des proches ou organiser une course longue distance ? Yas'Taxii propose un transport confortable et flexible.",
+      "Besoin d'un taxi pour visiter l'agglomération de Château-Thierry, les vignes de champagne, le musée Jean de La Fontaine, Paris, Reims ou d'autres destinations touristiques ? Yas'Taxii propose un transport confortable et flexible.",
     image: "/images/service-tourisme.jpeg",
     Icon: MapPinned,
     cta: "Voir le service",
-    keywords: ["taxi toutes distances", "taxi Paris Ile-de-France", "taxi tourisme Aisne"]
+    keywords: ["Taxi tourisme agglomération de Château-Thierry", "Taxi Paris Reims", "Taxi toutes distances"]
   },
   {
     id: "assistance",
     slug: "assistance-et-depannage",
-    title: "Assistance et depannage",
+    title: "Assistance et dépannage",
     shortTitle: "Assistance",
     description: "Solution de transport en cas d'immobilisation, panne, retour a domicile ou besoin urgent.",
     details:
-      "En cas d'imprevu, de panne ou de vehicule immobilise, Yas'Taxii peut vous accompagner pour rejoindre votre domicile, une gare, un garage ou un rendez-vous urgent.",
+      "En cas d'imprévu, de panne ou de véhicule immobilisé, Yas'Taxii peut vous accompagner pour rejoindre votre domicile, une gare, un garage ou un rendez-vous urgent.",
     image: "/images/service-assistance.jpeg",
     Icon: HeartPulse,
     cta: "Voir le service",
-    keywords: ["assistance taxi Aisne", "taxi urgence transport", "taxi retour domicile"]
+    keywords: ["Assistance taxi", "Taxi urgence transport", "Taxi retour domicile"]
   }
 ] as const;
 
 export const bookingServices = [
   {
     id: "medical",
-    title: "Transport medical conventionne",
-    shortTitle: "Medical conventionne",
-    description: "Transport assis professionnalise pour consultations, hospitalisations et hopitaux de jour.",
+    title: "Transport médical conventionné",
+    shortTitle: "Médical conventionné",
+    description: "Transport assis professionnalisé pour consultations, hospitalisations et hôpitaux de jour.",
     image: "/images/service-medical.jpg",
     Icon: Stethoscope,
-    cta: "Reserver"
+    cta: "Réserver"
   },
   {
     id: "airport",
-    title: "Transfert gares et aeroports",
-    shortTitle: "Gares et aeroports",
-    description: "Departs et arrivees vers Chateau-Thierry, CDG, Orly, Beauvais, gares et villes voisines.",
+    title: "Transfert gares et aéroports",
+    shortTitle: "Gares et aéroports",
+    description: "Départs et arrivées vers Château-Thierry, CDG, Orly, Beauvais, gares et villes voisines.",
     image: "/images/service-aeroport.webp",
     Icon: Plane,
     cta: "Demander un devis"
   },
   {
     id: "event",
-    title: "Evenementiel ou course taxi - Particulier",
+    title: "Course classique de taxi ou mise à disposition",
     shortTitle: "Particulier",
-    description: "Courses privees, evenements, sorties, retours et trajets toutes distances.",
+    description: "Toute l'agglomération de Château-Thierry (Sud de l'Aisne), Charles de Gaulle (CDG), gares SNCF de Paris, Reims et villes voisines.",
     image: "/images/service-tourisme.jpeg",
     Icon: Car,
-    cta: "Reserver"
+    cta: "Réserver"
   },
   {
     id: "business",
     title: "Professionnel / entreprise",
     shortTitle: "Entreprise",
-    description: "Trajets ponctuels ou recurrents, rendez-vous, facturation et prise en charge organisee.",
+    description: "Trajets ponctuels ou récurrents, rendez-vous, facturation et prise en charge organisée.",
     image: "/images/service-professionnel.webp",
     Icon: BriefcaseBusiness,
     cta: "Demander un devis"

@@ -13,10 +13,10 @@ export function SEOJsonLd() {
     image: `${siteConfig.siteUrl}/images/hero-taxi-premium.png`,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Chateau-Thierry",
+      addressLocality: "Gandelu, Crézancy et agglomération de Château-Thierry",
       addressCountry: "FR"
     },
-    areaServed: ["Chateau-Thierry", "Aisne", "Soissons", "Laon", "Reims", "Paris Ile-de-France", "CDG", "Orly", "Beauvais"],
+    areaServed: ["Gandelu", "Crézancy", "Château-Thierry", "Soissons", "Département de l'Aisne", "CDG", "Orly", "Beauvais"],
     openingHours: "Mo-Su 00:00-23:59",
     priceRange: "$$",
     makesOffer: services.map((service) => ({

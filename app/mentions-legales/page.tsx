@@ -2,14 +2,14 @@ import type React from "react";
 import { pageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/data/site";
 
-export const metadata = pageMetadata("Mentions legales - Yas'Taxii", "Mentions legales du site Yas'Taxii.", "/mentions-legales");
+export const metadata = pageMetadata("Mentions légales - Yas'Taxii", "Mentions légales du site Yas'Taxii.", "/mentions-legales");
 
 export default function MentionsLegalesPage() {
   return (
-    <LegalPage title="Mentions legales">
-      <p>Editeur du site : Yas&apos;Taxii, service de taxi a Chateau-Thierry, France.</p>
-      <p>Telephone : {siteConfig.phone}. Email : {siteConfig.email}.</p>
-      <p>Les informations legales completes, numero SIRET, responsable de publication et hebergeur sont a completer avant mise en ligne definitive.</p>
+    <LegalPage title="Mentions légales">
+      <p>Éditeur du site : Yas&apos;Taxii, service de taxi de Gandelu, Crézancy et toute l&apos;agglomération de Château-Thierry, France.</p>
+      <p>Téléphone : {siteConfig.phone}. Email : {siteConfig.email}.</p>
+      <p>Les informations légales complètes, numéro SIRET, responsable de publication et hébergeur sont à compléter avant mise en ligne définitive.</p>
     </LegalPage>
   );
 }

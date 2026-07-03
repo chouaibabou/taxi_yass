@@ -11,9 +11,9 @@ export function ServicesSection() {
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-3xl">
             <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Prestations</p>
-            <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Nos differents services taxi</h2>
+            <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Nos différents services taxi</h2>
             <p className="mt-4 text-neutral-600">
-              Un resume clair des prestations Yas&apos;Taxii. Pour le detail SEO complet, chaque service dispose maintenant de sa section dediee sur la page Services.
+              Un résumé clair des prestations Yas&apos;Taxii. Pour plus d&apos;informations, chaque service dispose d&apos;une section détaillée sur la page Services.
             </p>
           </div>
           <ButtonLink href="/services" variant="dark">
@@ -63,7 +63,7 @@ function ServiceActions({ serviceId, slug }: { serviceId: string; slug: string }
 
 function getPrimaryAction(serviceId: string) {
   if (serviceId === "medical" || serviceId === "tourism") {
-    return { href: "/#reserver", label: "Reserver" };
+    return { href: "/#reserver", label: "Réserver" };
   }
 
   if (serviceId === "assistance") {

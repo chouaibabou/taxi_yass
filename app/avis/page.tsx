@@ -6,8 +6,8 @@ import { ReviewCard } from "@/components/sections/ReviewsSection";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata(
-  "Avis clients Yas'Taxii - Taxi Chateau-Thierry",
-  "Consultez les avis clients Google de Yas'Taxii, taxi conventionne a Chateau-Thierry pour transport medical, gares, aeroports et trajets professionnels.",
+  "Avis clients Yas'Taxii - Taxi Château-Thierry",
+  "Consultez les avis clients Google de Yas'Taxii, taxi conventionné de Gandelu, Crézancy et toute l'agglomération de Château-Thierry pour transport médical, gares, aéroports et trajets professionnels.",
   "/avis"
 );
 
@@ -21,14 +21,14 @@ export default function AvisPage() {
           </p>
           <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight sm:text-5xl">Les avis Google de Yas&apos;Taxii</h1>
           <p className="mt-5 max-w-3xl text-lg leading-8 text-white/75">
-            Des retours clients pour mieux comprendre la qualite de service : ponctualite, conduite rassurante, accueil et confort.
+            Des retours clients pour mieux comprendre la qualité de service : ponctualité, conduite rassurante, accueil et confort.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={siteConfig.googleReviewWriteUrl} target="_blank">
               Laisser un avis Google <ExternalLink size={16} />
             </ButtonLink>
             <ButtonLink href="/#reserver" variant="secondary">
-              Reserver un trajet
+              Réserver un trajet
             </ButtonLink>
           </div>
         </div>
