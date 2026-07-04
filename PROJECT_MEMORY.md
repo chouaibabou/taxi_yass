@@ -78,8 +78,8 @@ Donnees dans `data/fleet.ts`.
 
 Seulement deux categories :
 
-- Eco : 1 a 4 passagers, 1 a 4 bagages.
-- Van : 1 a 8 passagers, 1 a 8 bagages.
+- Eco : id technique pour le vehicule affiche comme "Taxi", 1 a 4 passagers.
+- Van : id technique pour le vehicule affiche comme "Taxi Van", 1 a 8 passagers.
 
 Images actuelles : `public/images/fleet-eco.webp` et `public/images/fleet-van.jpeg`.
 
@@ -91,7 +91,7 @@ Composant principal : `components/booking/BookingWizard.tsx`.
 
 Etapes :
 
-1. `StepVehicle` : Eco ou Van.
+1. `StepVehicle` : Taxi ou Taxi Van.
 2. `StepService` : choix prestation.
 3. `StepForm` : formulaire adapte selon prestation.
 4. `StepConfirmation` : recapitulatif, modifier, envoyer.
@@ -119,8 +119,8 @@ Demande destinations / partenaires taxi :
 - Page : `app/destinations/page.tsx`
 - Formulaire : `components/sections/DestinationsRequestForm.tsx`
 - API route : `app/api/destination-request/route.ts`
-- Objectif : retirer le bloc zones de la home et proposer une page dediee ou le client choisit une zone, Eco/Van, le besoin et ses coordonnees. Certaines zones peuvent etre traitees via des taxis partenaires.
-- Nombre de passagers limite par vehicule dans les formulaires : Eco de 1 a 4, Van de 1 a 8, avec validation cote API.
+- Objectif : retirer le bloc zones de la home et proposer une page dediee ou le client choisit une zone, Taxi/Taxi Van, le besoin et ses coordonnees. Certaines zones peuvent etre traitees via des taxis partenaires.
+- Nombre de passagers limite par vehicule dans les formulaires : Taxi de 1 a 4, Taxi Van de 1 a 8, avec validation cote API.
 
 ## SEO
 
@@ -241,7 +241,7 @@ Modele : `.env.local.example`.
 - `AGENTS.md` contient les regles de travail pour Codex.
 - `CLAUDE.md` contient les regles principales pour Claude.
 - Codex et Claude doivent lire `PROJECT_MEMORY.md` avant chaque modification.
-- Respecter le contexte Yas'Taxii, le design premium noir / blanc / dore / vert WhatsApp, la reservation en 4 etapes et la flotte Eco/Van uniquement.
+- Respecter le contexte Yas'Taxii, le design premium noir / blanc / dore / vert WhatsApp, la reservation en 4 etapes et la flotte Taxi/Taxi Van uniquement.
 - Penser SEO local et Google Ads a chaque evolution.
 - Ne jamais ajouter de cle API, secret Google, mot de passe ou token dans le code.
 - Utiliser `.env.local.example` pour documenter les variables.
@@ -258,9 +258,9 @@ Build Next reussi avec Node 20. Next regenere `next-env.d.ts`; ce fichier auto-g
 
 Ajout memoire IA : creation de `AGENTS.md` et `CLAUDE.md`, ajout d'une section README pour travailler avec Codex/Claude sans repeter le contexte, ajout de la section "Memoire IA / regles Codex & Claude" dans ce fichier. Les vrais avis Google lisibles depuis le fichier technique ont remplace les avis exemples dans `data/reviews.ts`, et `ReviewsSection` affiche maintenant `dateLabel`.
 
-Ajout page services SEO : creation de `app/services/page.tsx`, enrichissement de `data/services.ts` avec 6 services SEO, conservation des 4 prestations du wizard dans `bookingServices`, ajout des images services/flotte dans `public/images`, affichage des vehicules Eco/Van avec images, navigation Services vers `/services`, sitemap mis a jour.
+Ajout page services SEO : creation de `app/services/page.tsx`, enrichissement de `data/services.ts` avec 6 services SEO, conservation des 4 prestations du wizard dans `bookingServices`, ajout des images services/flotte dans `public/images`, affichage des vehicules Taxi/Taxi Van avec images, navigation Services vers `/services`, sitemap mis a jour.
 
-Amelioration design : cartes services de la homepage retravaillees avec grandes images, overlay sombre, numerotation et CTA plus visible. Page `/services` modernisee avec hero texture, mosaique visuelle, grille de services numerotee, sections detaillees alternees et flotte Eco/Van plus premium. Section flotte homepage enrichie avec visuels, badges et arguments passagers/bagages plus lisibles.
+Amelioration design : cartes services de la homepage retravaillees avec grandes images, overlay sombre, numerotation et CTA plus visible. Page `/services` modernisee avec hero texture, mosaique visuelle, grille de services numerotee, sections detaillees alternees et flotte Taxi/Taxi Van plus premium. Section flotte homepage enrichie avec visuels et arguments passagers plus lisibles.
 
 Amelioration CTA services homepage : dans `ServicesSection`, chaque carte garde une hauteur stable et les boutons sont alignes en bas. Deux boutons par carte sur la meme ligne : action principale environ 70% (`Reserver`, `Demander un devis` ou `Appeler`) et `En savoir plus` environ 30%.
 
@@ -272,10 +272,19 @@ Reservation : ajout d'un bouton "Envoyer une nouvelle demande" sur l'ecran de su
 
 Avis : le total affiche est maintenant 113 avis Google via `siteConfig.googleReviewCount`, au lieu de compter seulement les 9 avis exemples presents dans `data/reviews.ts`.
 
-Destinations : retrait du bloc `ZonesSection` de la home. Creation de `/destinations` avec liste des zones, explication des partenariats taxis et formulaire dedie zone + vehicule Eco/Van + besoin + coordonnees. Le menu "Destinations" pointe vers `/destinations`, le sitemap inclut cette route.
+Destinations : retrait du bloc `ZonesSection` de la home. Creation de `/destinations` avec liste des zones, explication des partenariats taxis et formulaire dedie zone + vehicule Taxi/Taxi Van + besoin + coordonnees. Le menu "Destinations" pointe vers `/destinations`, le sitemap inclut cette route.
 
-Formulaires : limite passagers ajoutee selon le vehicule selectionne. Eco accepte 1 a 4 passagers, Van accepte 1 a 8 passagers dans le formulaire destinations et dans le wizard reservation, avec validation API.
+Formulaires : limite passagers ajoutee selon le vehicule selectionne. Taxi accepte 1 a 4 passagers, Taxi Van accepte 1 a 8 passagers dans le formulaire destinations et dans le wizard reservation, avec validation API.
 
 Corrections contenu Yas'Taxii : textes alignes sur le secteur reel Gandelu, Crezancy et agglomeration de Chateau-Thierry. Les libelles visibles utilisent maintenant "Taxi" au lieu de "Eco" pour le vehicule 1 a 4 passagers, tout en gardant l'id technique `eco`. Le transport medical est ecrit "conventionne" avec accent dans l'interface. La page destinations est limitee a Taxi Crezancy, Taxi Gandelu, Taxi Chateau-Thierry et Taxi Soissons, avec mention des chauffeurs/taxis partenaires. Le formulaire medical propose Hopital de jour, Consultation et Autre avec champ de precision. La reservation affiche les equipements de confort disponibles pour longs trajets.
 
 Reservation : la prestation particulier/evenementiel du wizard est renommee "Course classique de taxi ou mise a disposition" avec un texte couvrant l'agglomeration de Chateau-Thierry, le Sud de l'Aisne, CDG, les gares SNCF de Paris, Reims et villes voisines.
+
+Flotte : le vehicule 1 a 8 passagers est affiche comme "Taxi Van" sur le site. Les badges de capacite bagages ne sont plus affiches dans les sections vehicules, afin de garder uniquement les passagers visibles.
+
+Contact : le telephone public est affiche au format international `+33 6 61 00 11 76`. L'adresse email publique n'est plus affichee dans le footer, la section contact, les mentions legales ni le JSON-LD, et `data/site.ts` ne contient plus de fallback email public. La FAQ aeroports mentionne l'agglomeration de Chateau-Thierry et les departements voisins, sans "departement de l'Aisne".
+
+Flotte : les badges noirs/dorés "Yas'Taxii Taxi" et "Yas'Taxii Taxi Van" ont ete retires des images vehicules sur la home et sur `/services`.
+UX : ajout d'un bouton flottant `hfe-scroll-to-top-button` pour revenir en haut de page apres scroll, place au-dessus des boutons flottants Appeler/WhatsApp.
+
+Header : le sous-titre sous le logo affiche "Taxi conventionne gares et aeroports".

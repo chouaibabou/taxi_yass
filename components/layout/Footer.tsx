@@ -15,7 +15,6 @@ export function Footer() {
           <div className="font-bold text-taxi-gold">Contact</div>
           <div className="mt-3 grid gap-2 text-sm text-white/75">
             <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
-            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
             <a href={whatsappUrl()} target="_blank">
               WhatsApp
             </a>

@@ -6,6 +6,7 @@ import "@/app/globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingContactButtons } from "@/components/layout/FloatingContactButtons";
+import { ScrollToTopButton } from "@/components/layout/ScrollToTopButton";
 import { pageMetadata } from "@/lib/metadata";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         <main>{children}</main>
         <Footer />
+        <ScrollToTopButton />
         <FloatingContactButtons />
       </body>
     </html>

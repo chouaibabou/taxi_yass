@@ -11,7 +11,7 @@ export function FleetSection() {
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-3xl">
             <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Notre flotte</p>
-            <h2 className="mt-2 text-3xl font-black sm:text-4xl">Taxi ou Van, selon vos passagers et bagages</h2>
+            <h2 className="mt-2 text-3xl font-black sm:text-4xl">Taxi ou Taxi Van, selon vos passagers</h2>
             <p className="mt-4 text-white/70">Deux formats simples, lisibles et rassurants pour choisir le véhicule adapté au trajet.</p>
           </div>
           <ButtonLink href="/services" variant="secondary">
@@ -19,13 +19,10 @@ export function FleetSection() {
           </ButtonLink>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {fleet.map(({ id, name, passengers, luggage, description, image, Icon }) => (
+          {fleet.map(({ id, name, passengers, description, image, Icon }) => (
             <Card key={id} className="overflow-hidden border-white/10 bg-white/[0.06] text-white shadow-2xl">
               <div className="relative h-64 bg-[radial-gradient(circle_at_50%_20%,rgba(244,176,0,0.16),transparent_45%),linear-gradient(180deg,#ffffff,#f4f4f4)]">
                 <Image src={image} alt={`Véhicule ${name} Yas'Taxii`} fill className="object-contain p-5 transition duration-500 hover:scale-105" sizes="(min-width: 768px) 50vw, 100vw" />
-                <div className="absolute left-4 top-4 rounded-md bg-taxi-black px-3 py-2 text-xs font-black uppercase tracking-wide text-taxi-gold">
-                  Yas&apos;Taxii {name}
-                </div>
               </div>
               <div className="p-6">
                 <div className="flex items-start justify-between gap-4">
@@ -35,14 +32,10 @@ export function FleetSection() {
                   </div>
                   <Icon className="text-taxi-gold" size={38} />
                 </div>
-                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <div className="mt-6 grid gap-3">
                   <div className="flex items-center gap-2 rounded-md bg-white/10 p-4 text-sm font-bold">
                     <CheckCircle2 className="text-taxi-green" size={18} />
                     {passengers}
-                  </div>
-                  <div className="flex items-center gap-2 rounded-md bg-white/10 p-4 text-sm font-bold">
-                    <CheckCircle2 className="text-taxi-green" size={18} />
-                    {luggage}
                   </div>
                 </div>
                 <ButtonLink href="/#reserver" className="mt-6 w-full">

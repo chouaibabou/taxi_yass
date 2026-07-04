@@ -8,7 +8,7 @@ export default function MentionsLegalesPage() {
   return (
     <LegalPage title="Mentions légales">
       <p>Éditeur du site : Yas&apos;Taxii, service de taxi de Gandelu, Crézancy et toute l&apos;agglomération de Château-Thierry, France.</p>
-      <p>Téléphone : {siteConfig.phone}. Email : {siteConfig.email}.</p>
+      <p>Téléphone : {siteConfig.phone}.</p>
       <p>Les informations légales complètes, numéro SIRET, responsable de publication et hébergeur sont à compléter avant mise en ligne définitive.</p>
     </LegalPage>
   );
