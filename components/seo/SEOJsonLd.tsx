@@ -9,7 +9,6 @@ export function SEOJsonLd() {
     name: siteConfig.name,
     url: siteConfig.siteUrl,
     telephone: siteConfig.phone,
-    email: siteConfig.email,
     image: `${siteConfig.siteUrl}/images/hero-taxi-premium.png`,
     address: {
       "@type": "PostalAddress",

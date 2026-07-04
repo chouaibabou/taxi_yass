@@ -40,7 +40,7 @@ export function StepConfirmation({ draft, onBack, onSend }: Props) {
   const entries = Object.entries(draft).filter(([, value]) => value);
   const formatValue = (key: string, value: unknown) => {
     if (key === "vehicle") {
-      return value === "eco" ? "Taxi" : "Van";
+      return value === "eco" ? "Taxi" : "Taxi Van";
     }
 
     return String(value);

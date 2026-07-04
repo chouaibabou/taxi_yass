@@ -17,7 +17,7 @@ export function Header() {
           <div className="grid h-12 w-12 place-items-center rounded-md bg-taxi-gold text-lg font-black text-taxi-black">YT</div>
           <div>
             <div className="text-lg font-black leading-none">Yas&apos;Taxii</div>
-            <div className="text-xs font-semibold uppercase tracking-wide text-taxi-amber">Taxi conventionné</div>
+            <div className="max-w-40 text-xs font-semibold uppercase tracking-wide text-taxi-amber sm:max-w-none">Taxi conventionné gares et aéroports</div>
           </div>
         </Link>
 

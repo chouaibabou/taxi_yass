@@ -129,28 +129,24 @@ export default function ServicesPage() {
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-3xl">
               <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Véhicules disponibles</p>
-              <h2 className="mt-2 text-3xl font-black sm:text-4xl">Taxi et Van pour adapter le trajet au nombre de passagers</h2>
-              <p className="mt-4 text-white/70">Une flotte simple à comprendre, orientée confort, bagages et trajets toutes distances.</p>
+              <h2 className="mt-2 text-3xl font-black sm:text-4xl">Taxi et Taxi Van pour adapter le trajet au nombre de passagers</h2>
+              <p className="mt-4 text-white/70">Une flotte simple à comprendre, orientée confort et trajets toutes distances.</p>
             </div>
             <ButtonLink href="/#reserver" variant="secondary">
               Réserver maintenant
             </ButtonLink>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {fleet.map(({ id, name, passengers, luggage, description, image }) => (
+            {fleet.map(({ id, name, passengers, description, image }) => (
               <Card key={id} className="overflow-hidden border-white/10 bg-white/[0.06] text-white shadow-2xl">
                 <div className="relative h-64 bg-[radial-gradient(circle_at_50%_20%,rgba(244,176,0,0.16),transparent_45%),linear-gradient(180deg,#ffffff,#f4f4f4)]">
                   <Image src={image} alt={`Véhicule ${name} Yas'Taxii`} fill className="object-contain p-5" sizes="(min-width: 768px) 50vw, 100vw" />
-                  <div className="absolute left-4 top-4 rounded-md bg-taxi-black px-3 py-2 text-xs font-black uppercase tracking-wide text-taxi-gold">
-                    Yas&apos;Taxii {name}
-                  </div>
                 </div>
                 <div className="grid gap-4 p-6">
                   <h3 className="text-2xl font-black">{name}</h3>
                   <p className="text-white/70">{description}</p>
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="grid gap-3">
                     <div className="rounded-md bg-white/10 p-4 text-sm font-bold">{passengers}</div>
-                    <div className="rounded-md bg-white/10 p-4 text-sm font-bold">{luggage}</div>
                   </div>
                 </div>
               </Card>

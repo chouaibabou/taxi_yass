@@ -12,7 +12,7 @@ export const faq = [
   {
     question: "Quels aéroports desservez-vous ?",
     answer:
-      "Nous desservons notamment Paris Charles-de-Gaulle, Orly, Beauvais, ainsi que les gares et villes voisines depuis l'agglomération de Château-Thierry et le département de l'Aisne."
+      "Nous desservons notamment Paris Charles-de-Gaulle, Orly, Beauvais, ainsi que les gares et villes voisines depuis l'agglomération de Château-Thierry et les départements voisins."
   },
   {
     question: "Quels moyens de paiement acceptez-vous ?",
@@ -32,7 +32,7 @@ export const faq = [
   {
     question: "Puis-je réserver pour plusieurs personnes ?",
     answer:
-      "Oui. Choisissez Taxi jusqu'à 4 passagers ou Van jusqu'à 8 passagers selon le nombre de personnes et de bagages."
+      "Oui. Choisissez Taxi jusqu'à 4 passagers ou Taxi Van jusqu'à 8 passagers selon le nombre de personnes."
   },
   {
     question: "Comment modifier ou annuler une demande ?",

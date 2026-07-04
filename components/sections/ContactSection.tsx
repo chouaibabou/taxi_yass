@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import type React from "react";
 import { FormEvent, useState } from "react";
 import { siteConfig } from "@/data/site";
@@ -29,7 +29,6 @@ export function ContactSection() {
           <h2 className="mt-2 text-3xl font-black sm:text-4xl">Besoin d&apos;un taxi ou d&apos;un devis rapide ?</h2>
           <div className="mt-8 grid gap-4 text-sm">
             <a className="flex items-center gap-3 text-white/80" href={siteConfig.phoneHref}><Phone className="text-taxi-gold" /> {siteConfig.phone}</a>
-            <a className="flex items-center gap-3 text-white/80" href={`mailto:${siteConfig.email}`}><Mail className="text-taxi-gold" /> {siteConfig.email}</a>
             <div className="flex items-center gap-3 text-white/80"><MapPin className="text-taxi-gold" /> {siteConfig.location}</div>
             <div className="rounded-md bg-white/10 p-4 font-bold text-taxi-amber">{siteConfig.hours}</div>
           </div>

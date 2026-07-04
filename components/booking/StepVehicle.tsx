@@ -12,7 +12,7 @@ export function StepVehicle({ draft, setDraft, onNext }: Props) {
   return (
     <div>
       <div className="grid gap-4 md:grid-cols-2">
-        {fleet.map(({ id, name, passengers, luggage, description, Icon }) => (
+        {fleet.map(({ id, name, passengers, description, Icon }) => (
           <button
             key={id}
             type="button"
@@ -22,7 +22,7 @@ export function StepVehicle({ draft, setDraft, onNext }: Props) {
           >
             <Icon className="text-taxi-gold" size={28} />
             <div className="mt-4 text-2xl font-black">{name}</div>
-            <div className="mt-2 text-sm font-bold text-neutral-600">{passengers} - {luggage}</div>
+            <div className="mt-2 text-sm font-bold text-neutral-600">{passengers}</div>
             <p className="mt-3 text-sm leading-6 text-neutral-600">{description}</p>
           </button>
         ))}

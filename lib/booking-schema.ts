@@ -42,7 +42,7 @@ export const bookingSchema = z.object({
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       path: ["passengers"],
-      message: data.vehicle === "van" ? "Le Van accepte entre 1 et 8 passagers." : "Le Taxi accepte entre 1 et 4 passagers."
+      message: data.vehicle === "van" ? "Le Taxi Van accepte entre 1 et 8 passagers." : "Le Taxi accepte entre 1 et 4 passagers."
     });
   }
   if (data.service === "medical" && data.appointmentReason === "Autre" && !String(data.appointmentReasonOther || "").trim()) {
