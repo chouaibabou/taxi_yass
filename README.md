@@ -28,8 +28,8 @@ Copier `.env.local.example` vers `.env.local`, puis completer les valeurs utiles
 - `NEXT_PUBLIC_SITE_URL` : URL publique du site.
 - `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` : future cle Google Places Autocomplete.
 - `NEXT_PUBLIC_GTM_ID` : futur ID Google Tag Manager.
-- `CONTACT_EMAIL`, `OWNER_EMAIL`, `EMAIL_FROM` : adresses email.
-- `SMTP_*` : configuration email future.
+- `CONTACT_EMAIL`, `OWNER_EMAIL`, `EMAIL_FROM` : adresses email, par defaut `yastaxiireservations@gmail.com`.
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD` : configuration Brevo SMTP pour recevoir les formulaires.
 
 Ne jamais mettre de vraie cle API, mot de passe ou secret directement dans le code.
 
@@ -84,7 +84,9 @@ Les textes, images, mots-cles et slugs des services se modifient dans `data/serv
 
 ## Reservation et emails
 
-Le formulaire de reservation/devis envoie vers `app/api/booking/route.ts`. Les emails sont prepares mais l'envoi reel doit etre branche avec le fournisseur choisi, en utilisant uniquement les variables `.env.local`.
+Le formulaire de reservation/devis envoie vers `app/api/booking/route.ts`. Les formulaires contact et destinations utilisent aussi les routes API du projet.
+
+L'envoi email est branche avec Brevo SMTP via `nodemailer`. Les identifiants SMTP doivent rester uniquement dans `.env.local` et ne jamais etre commits.
 
 ## Google Ads et tracking
 

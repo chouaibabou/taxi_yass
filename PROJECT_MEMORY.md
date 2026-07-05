@@ -288,3 +288,15 @@ Flotte : les badges noirs/dorés "Yas'Taxii Taxi" et "Yas'Taxii Taxi Van" ont et
 UX : ajout d'un bouton flottant `hfe-scroll-to-top-button` pour revenir en haut de page apres scroll, place au-dessus des boutons flottants Appeler/WhatsApp.
 
 Header : le sous-titre sous le logo affiche "Taxi conventionne gares et aeroports".
+
+Hero : l'image d'accueil utilise maintenant `public/images/hero-yastaxi-vignes-aeroport.jpeg`, issue de la photo fournie par le client.
+
+Favicon : le logo fourni par le client est ajoute dans `public/logo/yastaxii-favicon.jpg` et declare dans les metadata Next via `icons`.
+
+Partenariat tourisme : ajout d'une page `/portes-de-la-champagne` pour presenter le partenariat avec la Maison du Tourisme Les Portes de la Champagne, avec logo `public/logo/portes-de-la-champagne.jpg`, lien officiel, contenu touristique local et CTA vers le formulaire de reservation. Une section resume est ajoutee sur la home avant le wizard.
+
+SEO : ajout de mots-cles locaux supplementaires dans `data/site.ts` pour Chateau-Thierry, Gandelu, Crezancy, Montmirail, Lizy-sur-Ourcq, taxi gare, Taxi VSL et recherches alternatives VTC/Uber. Ne pas ajouter de texte cache invisible dans les pages : privilegier metadata, contenu naturel et pages utiles.
+
+Email : envoi reel branche via SMTP Brevo avec `nodemailer`. Les routes `/api/booking`, `/api/contact` et `/api/destination-request` envoient maintenant les messages vers `OWNER_EMAIL`. L'adresse de reception Yas'Taxii est `yastaxiireservations@gmail.com`. Les secrets doivent rester uniquement dans `.env.local`; `.env.local.example` documente `SMTP_HOST=smtp-relay.brevo.com`, `SMTP_PORT=587`, `SMTP_USER`, `SMTP_PASSWORD`, `OWNER_EMAIL` et `EMAIL_FROM`.
+
+Email client : chaque formulaire envoie aussi un accuse de reception au client quand une adresse email est fournie. La reservation utilise `emails/customer-confirmation.ts`; les formulaires contact et destinations envoient une confirmation simple depuis leurs routes API respectives.

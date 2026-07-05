@@ -11,10 +11,17 @@ import { pageMetadata } from "@/lib/metadata";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
-export const metadata: Metadata = pageMetadata(
+export const metadata: Metadata = {
+  ...pageMetadata(
   "Yas'Taxii - Taxi conventionné Gandelu, Crézancy et Château-Thierry",
   "Taxi conventionné de Gandelu, Crézancy et toute l'agglomération de Château-Thierry pour transport médical, gares, aéroports CDG, Orly, Beauvais, courses privées et professionnelles."
-);
+  ),
+  icons: {
+    icon: [{ url: "/logo/yastaxii-favicon.jpg", sizes: "32x32", type: "image/jpeg" }],
+    shortcut: "/logo/yastaxii-favicon.jpg",
+    apple: [{ url: "/logo/yastaxii-favicon.jpg", sizes: "180x180", type: "image/jpeg" }]
+  }
+};
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

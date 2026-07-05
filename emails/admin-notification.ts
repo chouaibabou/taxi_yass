@@ -1,13 +1,11 @@
 import { BookingPayload } from "@/lib/booking-schema";
 import { siteConfig, whatsappUrl } from "@/data/site";
+import { rowsEmailTable } from "@/lib/email";
 
 export function adminNotificationEmail(payload: BookingPayload) {
   const clientEmail = payload.email || payload.businessEmail || "";
   const clientName = payload.fullName || payload.contactName || payload.company || "Client";
-  const rows = Object.entries(payload)
-    .filter(([, value]) => value)
-    .map(([key, value]) => `<tr><td style="padding:8px;border-bottom:1px solid #eee;font-weight:700">${key}</td><td style="padding:8px;border-bottom:1px solid #eee">${String(value)}</td></tr>`)
-    .join("");
+  const rows = rowsEmailTable(payload);
 
   return {
     subject: `Nouvelle demande Yas'Taxii - ${payload.service}`,

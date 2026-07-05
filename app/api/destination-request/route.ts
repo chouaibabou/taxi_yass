@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { rowsEmailTable, sendEmail } from "@/lib/email";
 
 const destinationRequestSchema = z.object({
   zone: z.string().min(2),
@@ -34,13 +35,44 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, errors: parsed.error.flatten() }, { status: 400 });
   }
 
-  // Partner taxi email/provider integration goes here. Use only .env.local secrets.
-  console.info("Destination partner request prepared", {
-    ownerEmail: process.env.OWNER_EMAIL,
-    zone: parsed.data.zone,
-    vehicle: parsed.data.vehicle,
-    need: parsed.data.need
-  });
+  const ownerEmail = process.env.OWNER_EMAIL;
+  if (!ownerEmail) {
+    return NextResponse.json({ ok: false, error: "OWNER_EMAIL is not configured" }, { status: 500 });
+  }
+
+  try {
+    await sendEmail({
+      to: ownerEmail,
+      subject: `Nouvelle demande destination partenaire - ${parsed.data.zone}`,
+      replyTo: parsed.data.email,
+      html: `
+        <div style="font-family:Arial,sans-serif;color:#151515">
+          <h1>Nouvelle demande destination / taxi partenaire</h1>
+          <table style="border-collapse:collapse;width:100%;max-width:720px">${rowsEmailTable(parsed.data)}</table>
+        </div>
+      `
+    });
+
+    await sendEmail({
+      to: parsed.data.email,
+      subject: "Votre demande de trajet Yas'Taxii a bien ete recue",
+      html: `
+        <div style="font-family:Arial,sans-serif;color:#151515">
+          <h1>Votre demande de trajet a bien ete recue</h1>
+          <p>Bonjour ${parsed.data.fullName},</p>
+          <p>Merci pour votre demande. Nous avons bien recu les informations et nous reviendrons vers vous rapidement.</p>
+          <p><strong>Zone :</strong> ${parsed.data.zone}</p>
+          <p><strong>Vehicule :</strong> ${parsed.data.vehicle === "van" ? "Taxi Van" : "Taxi"}</p>
+          <p><strong>Besoin :</strong> ${parsed.data.need}</p>
+          <p><strong>Telephone indique :</strong> ${parsed.data.phone}</p>
+          <p style="color:#666">A tres bientot,<br />Yas'Taxii</p>
+        </div>
+      `
+    });
+  } catch (error) {
+    console.error("Destination email send failed", error);
+    return NextResponse.json({ ok: false, error: "Email send failed" }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }
