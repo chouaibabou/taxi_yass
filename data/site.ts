@@ -26,17 +26,32 @@ export const siteConfig = {
   ],
   seoKeywords: [
     "Taxi Château-Thierry",
+    "Taxi de Château-Thierry",
+    "Chateau thierry taxi",
+    "Taxi Chateau Thierry",
     "Taxi Gandelu",
+    "Taxi de Gandelu",
     "Taxi Crézancy",
+    "Taxi de Crézancy",
+    "Taxi crezancy",
+    "Taxi Montmirail",
+    "Taxi de Montmirail",
+    "Taxi Lizy-sur-Ourcq",
+    "Taxi de Lizy-sur-Ourcq",
+    "Taxi lizy sur ourcq",
     "Taxi conventionné agglomération de Château-Thierry",
     "Taxi conventionné département de l'Aisne",
     "Transport médical conventionné département de l'Aisne",
     "Taxi gare Château-Thierry",
+    "Taxi gare chateau thierry",
     "Taxi aéroport CDG",
     "Taxi aéroport Orly",
     "Taxi Beauvais",
+    "Taxi VSL",
     "Taxi pour trajet professionnel",
-    "Taxi toutes distances"
+    "Taxi toutes distances",
+    "Alternative VTC Château-Thierry",
+    "Alternative Uber Château-Thierry"
   ]
 };
 

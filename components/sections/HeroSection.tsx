@@ -17,7 +17,7 @@ const highlights = [
 export function HeroSection() {
   return (
     <section id="accueil" className="relative isolate overflow-hidden bg-taxi-black text-white">
-      <Image src="/images/hero-taxi-premium.png" alt="Taxi premium Yas'Taxii" fill priority className="object-cover object-center opacity-55" sizes="100vw" />
+      <Image src="/images/hero-yastaxi-vignes-aeroport.jpeg" alt="Taxi Yas'Taxii vers gares et aéroports" fill priority className="object-cover object-center opacity-60" sizes="100vw" />
       <div className="absolute inset-0 bg-gradient-to-r from-taxi-black via-taxi-black/82 to-taxi-black/20" />
       <div className="relative mx-auto grid min-h-[calc(100svh-5rem)] max-w-7xl content-center px-4 py-20 sm:px-6 lg:px-8">
         <div className="max-w-3xl">

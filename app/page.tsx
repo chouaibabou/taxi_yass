@@ -5,6 +5,7 @@ import { FleetSection } from "@/components/sections/FleetSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
+import { TourismPartnershipSection } from "@/components/sections/TourismPartnershipSection";
 import { SEOJsonLd } from "@/components/seo/SEOJsonLd";
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
       <SEOJsonLd />
       <HeroSection />
       <ServicesSection />
+      <TourismPartnershipSection />
       <BookingWizard />
       <FleetSection />
       <ReviewsSection />
