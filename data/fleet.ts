@@ -6,7 +6,7 @@ export const fleet = [
     name: "Taxi",
     passengers: "1 à 4 passagers",
     description: "Taxi confortable pour trajets quotidiens, gares, aéroports et transport médical conventionné.",
-    image: "/images/fleet-eco.webp",
+    image: "/images/fleet-taxi.jpeg",
     Icon: Users
   },
   {
@@ -14,7 +14,7 @@ export const fleet = [
     name: "Taxi Van",
     passengers: "1 à 8 passagers",
     description: "Idéal familles, groupes, gares, aéroports, événements et déplacements professionnels.",
-    image: "/images/fleet-van.jpeg",
+    image: "/images/fleet-taxi-van.jpeg",
     Icon: Briefcase
   }
 ] as const;

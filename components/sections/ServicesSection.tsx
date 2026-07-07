@@ -1,23 +1,30 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowRight, Phone } from "lucide-react";
-import { services } from "@/data/services";
+import { getLocalizedServices } from "@/data/localized";
 import { siteConfig } from "@/data/site";
+import { getTranslations } from "@/data/translations";
+import { localizedPath } from "@/lib/i18n";
+import { useLocale } from "@/lib/locale-context";
 import { ButtonLink } from "@/components/ui/Button";
 
 export function ServicesSection() {
+  const locale = useLocale();
+  const t = getTranslations(locale);
+  const services = getLocalizedServices(locale);
+
   return (
     <section id="services" className="bg-white py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-3xl">
-            <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Prestations</p>
-            <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Nos différents services taxi</h2>
-            <p className="mt-4 text-neutral-600">
-              Un résumé clair des prestations Yas&apos;Taxii. Pour plus d&apos;informations, chaque service dispose d&apos;une section détaillée sur la page Services.
-            </p>
+            <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">{t.servicesSection.eyebrow}</p>
+            <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">{t.servicesSection.title}</h2>
+            <p className="mt-4 text-neutral-600">{t.servicesSection.text}</p>
           </div>
-          <ButtonLink href="/services" variant="dark">
-            Voir tous les services
+          <ButtonLink href={localizedPath("/services", locale)} variant="dark">
+            {t.servicesSection.all}
           </ButtonLink>
         </div>
         <div className="mt-10 grid auto-rows-fr gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -45,7 +52,9 @@ export function ServicesSection() {
 }
 
 function ServiceActions({ serviceId, slug }: { serviceId: string; slug: string }) {
-  const primary = getPrimaryAction(serviceId);
+  const locale = useLocale();
+  const t = getTranslations(locale);
+  const primary = getPrimaryAction(serviceId, t);
 
   return (
     <div className="mt-auto grid grid-cols-[minmax(0,7fr)_minmax(116px,3fr)] gap-2">
@@ -53,22 +62,22 @@ function ServiceActions({ serviceId, slug }: { serviceId: string; slug: string }
         {primary.icon === "phone" ? <Phone className="shrink-0" size={16} /> : null}
         <span className="truncate">{primary.label}</span>
       </ButtonLink>
-      <ButtonLink href={`/services#${slug}`} variant="primary" className="h-12 min-w-0 px-3 text-center text-xs sm:text-sm">
-        <span className="truncate">En savoir plus</span>
+      <ButtonLink href={localizedPath(`/services#${slug}`, locale)} variant="primary" className="h-12 min-w-0 px-3 text-center text-xs sm:text-sm">
+        <span className="truncate">{t.common.learnMore}</span>
         <ArrowRight className="shrink-0" size={15} />
       </ButtonLink>
     </div>
   );
 }
 
-function getPrimaryAction(serviceId: string) {
+function getPrimaryAction(serviceId: string, t: ReturnType<typeof getTranslations>) {
   if (serviceId === "medical" || serviceId === "tourism") {
-    return { href: "/#reserver", label: "Réserver" };
+    return { href: "#reserver", label: t.common.book };
   }
 
   if (serviceId === "assistance") {
-    return { href: siteConfig.phoneHref, label: "Appeler", icon: "phone" };
+    return { href: siteConfig.phoneHref, label: t.common.call, icon: "phone" };
   }
 
-  return { href: "/#reserver", label: "Demander un devis" };
+  return { href: "#reserver", label: t.common.quote };
 }

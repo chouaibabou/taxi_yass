@@ -1,14 +1,49 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, ExternalLink, Star } from "lucide-react";
-import { useRef } from "react";
-import { reviews } from "@/data/reviews";
+import { useEffect, useRef, useState } from "react";
+import { Review, reviews } from "@/data/reviews";
 import { siteConfig } from "@/data/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 
 export function ReviewsSection() {
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const [googleRating, setGoogleRating] = useState(siteConfig.googleRating);
+  const [googleReviewCount, setGoogleReviewCount] = useState(siteConfig.googleReviewCount);
+  const [displayReviews, setDisplayReviews] = useState<Review[]>(reviews);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadGoogleReviews() {
+      try {
+        const response = await fetch("/api/google-reviews");
+        if (!response.ok) return;
+
+        const data = (await response.json()) as {
+          rating?: number;
+          reviewCount?: number;
+          reviews?: Review[];
+        };
+
+        if (cancelled) return;
+        setGoogleRating(data.rating || siteConfig.googleRating);
+        setGoogleReviewCount(data.reviewCount || siteConfig.googleReviewCount);
+        if (data.reviews?.length) {
+          setDisplayReviews(data.reviews);
+        }
+      } catch {
+        // Manual reviews stay visible if Google is unavailable.
+      }
+    }
+
+    loadGoogleReviews();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   function scrollReviews(direction: "previous" | "next") {
     const scroller = scrollerRef.current;
@@ -27,7 +62,7 @@ export function ReviewsSection() {
           <div className="max-w-3xl">
             <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Avis clients</p>
             <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Une relation de confiance, trajet apres trajet</h2>
-            <p className="mt-4 text-neutral-600">Note Google {siteConfig.googleRating.toFixed(1)}/5 basee sur {siteConfig.googleReviewCount} avis clients.</p>
+            <p className="mt-4 text-neutral-600">Note Google {googleRating.toFixed(1)}/5 basee sur {googleReviewCount} avis clients.</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/avis" variant="dark">
@@ -49,7 +84,7 @@ export function ReviewsSection() {
             <ChevronLeft size={22} />
           </button>
           <div ref={scrollerRef} className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {reviews.map((review) => (
+            {displayReviews.map((review) => (
               <ReviewCard key={`${review.name}-${review.dateLabel}`} review={review} />
             ))}
           </div>
@@ -64,14 +99,12 @@ export function ReviewsSection() {
         </div>
 
         <div className="mt-5 text-center text-sm text-neutral-700">
-          <strong>Google rating score: {siteConfig.googleRating.toFixed(1)}</strong> of 5, based on <strong>{siteConfig.googleReviewCount} reviews</strong>
+          <strong>Google rating score: {googleRating.toFixed(1)}</strong> of 5, based on <strong>{googleReviewCount} reviews</strong>
         </div>
       </div>
     </section>
   );
 }
-
-type Review = (typeof reviews)[number];
 
 export function ReviewCard({ review, compact = false }: { review: Review; compact?: boolean }) {
   return (

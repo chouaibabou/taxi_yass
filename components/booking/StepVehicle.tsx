@@ -1,4 +1,6 @@
-import { fleet } from "@/data/fleet";
+import { getLocalizedFleet } from "@/data/localized";
+import { getTranslations } from "@/data/translations";
+import { useLocale } from "@/lib/locale-context";
 import { Button } from "@/components/ui/Button";
 import { BookingDraft } from "@/components/booking/BookingWizard";
 
@@ -9,6 +11,10 @@ type Props = {
 };
 
 export function StepVehicle({ draft, setDraft, onNext }: Props) {
+  const locale = useLocale();
+  const t = getTranslations(locale);
+  const fleet = getLocalizedFleet(locale);
+
   return (
     <div>
       <div className="grid gap-4 md:grid-cols-2">
@@ -28,7 +34,7 @@ export function StepVehicle({ draft, setDraft, onNext }: Props) {
         ))}
       </div>
       <div className="mt-6 flex justify-end">
-        <Button onClick={onNext}>Continuer</Button>
+        <Button onClick={onNext}>{t.common.continue}</Button>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
-import { bookingServices } from "@/data/services";
+import { getLocalizedBookingServices } from "@/data/localized";
+import { getTranslations } from "@/data/translations";
+import { useLocale } from "@/lib/locale-context";
 import { Button } from "@/components/ui/Button";
 import { BookingDraft } from "@/components/booking/BookingWizard";
 
@@ -10,6 +12,10 @@ type Props = {
 };
 
 export function StepService({ draft, setDraft, onBack, onNext }: Props) {
+  const locale = useLocale();
+  const t = getTranslations(locale);
+  const bookingServices = getLocalizedBookingServices(locale);
+
   return (
     <div>
       <div className="grid gap-4 md:grid-cols-2">
@@ -28,8 +34,8 @@ export function StepService({ draft, setDraft, onBack, onNext }: Props) {
         ))}
       </div>
       <div className="mt-6 flex justify-between gap-3">
-        <Button variant="ghost" onClick={onBack}>Retour</Button>
-        <Button onClick={onNext}>Continuer</Button>
+        <Button variant="ghost" onClick={onBack}>{t.common.back}</Button>
+        <Button onClick={onNext}>{t.common.continue}</Button>
       </div>
     </div>
   );

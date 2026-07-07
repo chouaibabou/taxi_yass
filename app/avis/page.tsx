@@ -1,8 +1,7 @@
 import { ExternalLink } from "lucide-react";
-import { reviews } from "@/data/reviews";
 import { siteConfig } from "@/data/site";
 import { ButtonLink } from "@/components/ui/Button";
-import { ReviewCard } from "@/components/sections/ReviewsSection";
+import { ReviewsPageGrid } from "@/components/sections/ReviewsPageGrid";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata(
@@ -36,21 +35,7 @@ export default function AvisPage() {
 
       <section className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Google</p>
-              <h2 className="mt-2 text-3xl font-black text-taxi-black">Tous les avis clients</h2>
-            </div>
-            <div className="rounded-lg bg-taxi-cream p-4 text-sm text-neutral-700">
-              <strong>Google rating score: {siteConfig.googleRating.toFixed(1)}</strong> of 5, based on <strong>{siteConfig.googleReviewCount} reviews</strong>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {reviews.map((review) => (
-              <ReviewCard key={`${review.name}-${review.dateLabel}`} review={review} compact />
-            ))}
-          </div>
+          <ReviewsPageGrid />
         </div>
       </section>
     </>
