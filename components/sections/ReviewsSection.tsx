@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { ChevronLeft, ChevronRight, ExternalLink, Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -56,7 +56,7 @@ export function ReviewsSection() {
   }
 
   return (
-    <section id="avis" className="bg-white py-20">
+    <section id="avis" className="bg-white py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-3xl">
@@ -130,3 +130,4 @@ export function ReviewCard({ review, compact = false }: { review: Review; compac
     </Card>
   );
 }
+

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { MapPin, Phone } from "lucide-react";
 import type React from "react";
@@ -26,7 +26,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="bg-neutral-950 py-20 text-white">
+    <section id="contact" className="bg-neutral-950 py-8 text-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
         <div>
           <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">{t.contact.eyebrow}</p>
@@ -46,11 +46,14 @@ export function ContactSection() {
             <div className="rounded-md bg-emerald-50 p-5 font-bold text-emerald-700">{t.contact.success}</div>
           ) : (
             <form className="grid gap-4" onSubmit={onSubmit}>
+              <p className="text-right text-xs font-medium text-neutral-500">
+                <span className="text-red-600">*</span> Champs obligatoires
+              </p>
               <Input name="fullName" label={t.booking.fields.fullName} required />
               <Input name="email" type="email" label={t.booking.fields.email} required />
               <Input name="phone" label={t.booking.fields.phone} required />
               <label className="grid gap-2 text-sm font-semibold">
-                {t.contact.message}
+                <FieldLabel label={t.contact.message} required />
                 <textarea name="message" required rows={5} className="rounded-md border border-neutral-200 px-4 py-3 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20" />
               </label>
               <Button type="submit">{t.common.send}</Button>
@@ -66,8 +69,18 @@ function Input(props: React.InputHTMLAttributes<HTMLInputElement> & { label: str
   const { label, ...inputProps } = props;
   return (
     <label className="grid gap-2 text-sm font-semibold">
-      {label}
+      <FieldLabel label={label} required={inputProps.required} />
       <input {...inputProps} className="h-12 rounded-md border border-neutral-200 px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20" />
     </label>
   );
 }
+
+function FieldLabel({ label, required }: { label: string; required?: boolean }) {
+  return (
+    <span>
+      {label}
+      {required ? <span className="ml-1 text-red-600">*</span> : null}
+    </span>
+  );
+}
+

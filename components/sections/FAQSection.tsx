@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { ChevronDown } from "lucide-react";
 import { getLocalizedFaq } from "@/data/localized";
@@ -11,7 +11,7 @@ export function FAQSection() {
   const faq = getLocalizedFaq(locale);
 
   return (
-    <section id="faq" className="bg-white py-20">
+    <section id="faq" className="bg-white py-8">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">{t.faq.eyebrow}</p>
         <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">{t.faq.title}</h2>
@@ -30,3 +30,4 @@ export function FAQSection() {
     </section>
   );
 }
+

@@ -278,6 +278,10 @@ Destinations : retrait du bloc `ZonesSection` de la home. Creation de `/destinat
 
 Formulaires : limite passagers ajoutee selon le vehicule selectionne. Taxi accepte 1 a 4 passagers, Taxi Van accepte 1 a 8 passagers dans le formulaire destinations et dans le wizard reservation, avec validation API.
 
+UX mobile formulaires : les champs "Nombre de passagers" du wizard et du formulaire destinations sont des listes deroulantes limitees selon le vehicule, afin d'eviter qu'un mobile laisse saisir une valeur hors limite.
+
+UX formulaires : les formulaires reservation, destinations et contact affichent maintenant la mention "* Champs obligatoires" en haut et une etoile rouge sur chaque label requis.
+
 Corrections contenu Yas'Taxii : textes alignes sur le secteur reel Gandelu, Crezancy et agglomeration de Chateau-Thierry. Les libelles visibles utilisent maintenant "Taxi" au lieu de "Eco" pour le vehicule 1 a 4 passagers, tout en gardant l'id technique `eco`. Le transport medical est ecrit "conventionne" avec accent dans l'interface. La page destinations est limitee a Taxi Crezancy, Taxi Gandelu, Taxi Chateau-Thierry et Taxi Soissons, avec mention des chauffeurs/taxis partenaires. Le formulaire medical propose Hopital de jour, Consultation et Autre avec champ de precision. La reservation affiche les equipements de confort disponibles pour longs trajets.
 
 Reservation : la prestation particulier/evenementiel du wizard est renommee "Course classique de taxi ou mise a disposition" avec un texte couvrant l'agglomeration de Chateau-Thierry, le Sud de l'Aisne, CDG, les gares SNCF de Paris, Reims et villes voisines.
@@ -312,3 +316,15 @@ Flotte images : les visuels Taxi et Taxi Van ont ete remplaces par les nouvelles
 Hero : le fond d'accueil est maintenant un slider automatique avec fondu. Il garde l'image existante `hero-yastaxi-vignes-aeroport.jpeg` et ajoute trois images client : `hero-yastaxi-destinations-europe.jpeg`, `hero-yastaxi-evenement.jpeg` et `hero-yastaxi-gares-aeroports.jpeg`.
 
 Flotte design : les images Taxi et Taxi Van remplissent maintenant davantage les cartes sur la home et sur `/services`, avec zone visuelle plus haute et cadrage `object-cover` pour eviter les petits visuels centres dans un grand fond blanc.
+
+Espacements : les sections principales utilisent maintenant `py-8` pour reduire les grands espaces verticaux entre les blocs, tout en gardant le hero plus ample.
+
+UX mobile home : la section services de la homepage garde son contenu dans le HTML pour le SEO, mais les cartes sont repliees sur mobile derriere un bouton avec chevron. Sur tablette/desktop, les services restent affiches directement en grille.
+
+UX mobile reservation : la liste des equipements de confort du wizard reste presente dans le HTML, mais elle est repliee sur mobile derriere un bouton avec chevron pour reduire la hauteur de la page. Sur desktop, les equipements restent visibles directement.
+
+Encodage : correction des textes accentues affiches en mojibake (`Ã©`, `Ã¢`, etc.) dans les pages et sections. Les fichiers doivent rester en UTF-8 pour afficher correctement les accents francais.
+
+Header desktop : le menu desktop est simplifie pour reduire la densite visuelle. Il affiche Accueil, Reserver, Taxis partenaires, Infos utiles et Contact. Le menu Infos utiles regroupe Services, Flotte, Avis et FAQ. Le menu mobile garde une liste simple.
+
+Header UX : les menus deroulants desktop "Infos utiles" et langue sont maintenant ouvrables au clic, en plus du survol, pour eviter les problemes de navigation et permettre le changement de langue de maniere fiable.

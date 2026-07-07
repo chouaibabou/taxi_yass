@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { CheckCircle2, MapPinned } from "lucide-react";
 import type React from "react";
@@ -39,23 +39,6 @@ export function DestinationsRequestForm() {
     });
   }
 
-  function updatePassengers(value: string) {
-    if (value === "") {
-      setFormState((current) => ({ ...current, passengers: "" }));
-      return;
-    }
-
-    const count = Number(value);
-    if (!Number.isFinite(count)) {
-      return;
-    }
-
-    setFormState((current) => ({
-      ...current,
-      passengers: String(Math.min(Math.max(count, 1), passengerMax))
-    }));
-  }
-
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
@@ -78,7 +61,7 @@ export function DestinationsRequestForm() {
   }
 
   return (
-    <section className="bg-taxi-cream py-20">
+    <section className="bg-taxi-cream py-8">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
         <div>
           <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Destinations partenaires</p>
@@ -116,6 +99,9 @@ export function DestinationsRequestForm() {
             </div>
           ) : (
             <form className="grid gap-5" onSubmit={onSubmit}>
+              <p className="text-right text-xs font-medium text-neutral-500">
+                <span className="text-red-600">*</span> Champs obligatoires
+              </p>
               <div className="rounded-lg bg-taxi-black p-4 text-white">
                 <div className="flex items-center gap-3 text-sm font-black text-taxi-gold">
                   <MapPinned size={22} />
@@ -126,7 +112,7 @@ export function DestinationsRequestForm() {
 
               <div className="grid gap-4 md:grid-cols-2">
                 <label className="grid gap-2 text-sm font-semibold text-taxi-black">
-                  Choisir le véhicule
+                  <FieldLabel label="Choisir le véhicule" required />
                   <select
                     value={formState.vehicle}
                     onChange={(event) => updateVehicle(event.target.value as "eco" | "van")}
@@ -141,7 +127,7 @@ export function DestinationsRequestForm() {
                 </label>
 
                 <label className="grid gap-2 text-sm font-semibold text-taxi-black">
-                  Votre besoin
+                  <FieldLabel label="Votre besoin" required />
                   <select
                     value={formState.need}
                     onChange={(event) => setFormState((current) => ({ ...current, need: event.target.value }))}
@@ -160,16 +146,22 @@ export function DestinationsRequestForm() {
                 <Input name="fullName" label="Nom et prénom" required />
                 <Input name="email" type="email" label="Email" required />
                 <Input name="phone" label="Téléphone" required />
-                <Input
-                  name="passengers"
-                  type="number"
-                  label={`Nombre de passagers (${formState.vehicle === "eco" ? "1 à 4" : "1 à 8"})`}
-                  min={1}
-                  max={passengerMax}
-                  value={formState.passengers}
-                  onChange={(event) => updatePassengers(event.target.value)}
-                  required
-                />
+                <label className="grid gap-2 text-sm font-semibold text-taxi-black">
+                  <FieldLabel label={`Nombre de passagers (${formState.vehicle === "eco" ? "1 à 4" : "1 à 8"})`} required />
+                  <select
+                    name="passengers"
+                    value={formState.passengers}
+                    onChange={(event) => setFormState((current) => ({ ...current, passengers: event.target.value }))}
+                    className="h-12 rounded-md border border-neutral-200 bg-white px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20"
+                    required
+                  >
+                    {Array.from({ length: passengerMax }, (_, index) => String(index + 1)).map((passengerCount) => (
+                      <option key={passengerCount} value={passengerCount}>
+                        {passengerCount}
+                      </option>
+                    ))}
+                  </select>
+                </label>
                 <Input name="pickupAddress" label="Adresse de prise en charge" required />
                 <Input name="destinationAddress" label="Adresse d'arrivée" required />
                 <Input name="dateTime" type="datetime-local" label="Date et heure souhaitées" />
@@ -195,8 +187,18 @@ function Input(props: React.InputHTMLAttributes<HTMLInputElement> & { label: str
   const { label, ...inputProps } = props;
   return (
     <label className="grid gap-2 text-sm font-semibold text-taxi-black">
-      {label}
+      <FieldLabel label={label} required={inputProps.required} />
       <input {...inputProps} className="h-12 rounded-md border border-neutral-200 px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20" />
     </label>
   );
 }
+
+function FieldLabel({ label, required }: { label: string; required?: boolean }) {
+  return (
+    <span>
+      {label}
+      {required ? <span className="ml-1 text-red-600">*</span> : null}
+    </span>
+  );
+}
+

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
@@ -15,7 +15,7 @@ export function FleetSection() {
   const fleet = getLocalizedFleet(locale);
 
   return (
-    <section id="flotte" className="bg-neutral-950 py-20 text-white">
+    <section id="flotte" className="bg-neutral-950 py-8 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-3xl">
@@ -64,3 +64,4 @@ export function FleetSection() {
     </section>
   );
 }
+

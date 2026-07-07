@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, ChevronDown, Phone } from "lucide-react";
 import { getLocalizedServices } from "@/data/localized";
 import { siteConfig } from "@/data/site";
 import { getTranslations } from "@/data/translations";
@@ -13,9 +14,10 @@ export function ServicesSection() {
   const locale = useLocale();
   const t = getTranslations(locale);
   const services = getLocalizedServices(locale);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
-    <section id="services" className="bg-white py-20">
+    <section id="services" className="bg-white py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-3xl">
@@ -27,7 +29,20 @@ export function ServicesSection() {
             {t.servicesSection.all}
           </ButtonLink>
         </div>
-        <div className="mt-10 grid auto-rows-fr gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <button
+          type="button"
+          className="mt-5 flex w-full items-center justify-center gap-2 rounded-md border border-taxi-gold bg-taxi-gold px-4 py-3 text-sm font-black text-taxi-black shadow-sm md:hidden"
+          aria-expanded={servicesOpen}
+          aria-controls="home-services-list"
+          onClick={() => setServicesOpen((current) => !current)}
+        >
+          {servicesOpen ? t.common.close : t.common.showServices}
+          <ChevronDown className={`transition duration-200 ${servicesOpen ? "rotate-180" : ""}`} size={20} />
+        </button>
+        <div
+          id="home-services-list"
+          className={`${servicesOpen ? "grid" : "hidden"} mt-6 auto-rows-fr gap-5 md:mt-10 md:grid md:grid-cols-2 lg:grid-cols-3`}
+        >
           {services.map(({ id, slug, title, description, image, Icon }) => (
             <article
               key={id}
@@ -81,3 +96,4 @@ function getPrimaryAction(serviceId: string, t: ReturnType<typeof getTranslation
 
   return { href: "#reserver", label: t.common.quote };
 }
+

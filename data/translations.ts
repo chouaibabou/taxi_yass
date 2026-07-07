@@ -8,9 +8,10 @@ export const translations = {
       booking: "Reserver",
       fleet: "Flotte",
       reviews: "Avis",
-      destinations: "Destinations",
+      destinations: "Taxis partenaires",
       faq: "FAQ",
-      contact: "Contact"
+      contact: "Contact",
+      more: "Infos utiles"
     },
     common: {
       call: "Appeler",
@@ -22,7 +23,9 @@ export const translations = {
       back: "Retour",
       send: "Envoyer",
       edit: "Modifier",
-      choose: "Choisir"
+      choose: "Choisir",
+      close: "Masquer",
+      showServices: "Afficher les services"
     },
     headerSubtitle: "Taxi conventionne gares et aeroports",
     footerText:
@@ -76,6 +79,7 @@ export const translations = {
       successText:
         "Merci, nous avons bien recu votre demande. Notre equipe va l'etudier et vous repondra dans les plus brefs delais. Un email recapitulatif vous a ete envoye.",
       newRequest: "Envoyer une nouvelle demande",
+      showComfort: "Voir les equipements",
       comfortItems: [
         "Siege bebe 360 degres convertible en cosy",
         "Rehausseur",
@@ -167,8 +171,8 @@ export const translations = {
     }
   },
   en: {
-    nav: { home: "Home", services: "Services", booking: "Book", fleet: "Fleet", reviews: "Reviews", destinations: "Destinations", faq: "FAQ", contact: "Contact" },
-    common: { call: "Call", whatsapp: "WhatsApp", book: "Book", quote: "Request a quote", learnMore: "Learn more", continue: "Continue", back: "Back", send: "Send", edit: "Edit", choose: "Choose" },
+    nav: { home: "Home", services: "Services", booking: "Book", fleet: "Fleet", reviews: "Reviews", destinations: "Partner taxis", faq: "FAQ", contact: "Contact", more: "Useful info" },
+    common: { call: "Call", whatsapp: "WhatsApp", book: "Book", quote: "Request a quote", learnMore: "Learn more", continue: "Continue", back: "Back", send: "Send", edit: "Edit", choose: "Choose", close: "Hide", showServices: "Show services" },
     headerSubtitle: "Licensed taxi, stations and airports",
     footerText: "Licensed taxi from Gandelu, Crezancy and the Chateau-Thierry area for medical transport, stations, airports, private rides and business trips in Aisne and nearby areas.",
     legal: "Legal",
@@ -198,6 +202,7 @@ export const translations = {
       successTitle: "Your request has been sent!",
       successText: "Thank you, we have received your request. Our team will review it and reply as soon as possible. A summary email has been sent to you.",
       newRequest: "Send a new request",
+      showComfort: "View equipment",
       comfortItems: ["360 baby seat convertible into cosy", "Booster seat", "Baby cosy", "Travel pillow", "Compression cooler (-20 deg C)", "220V socket", "Tow bar", "Bike rack up to 3 bikes"],
       fields: { fullName: "Full name", email: "Email", phone: "Phone", pickupAddress: "Pickup address", destinationAddress: "Arrival address", appointmentReason: "Appointment reason", appointmentReasonOther: "Specify the reason", appointmentDate: "Appointment date", appointmentTime: "Appointment time", passengers: "Number of passengers", luggage: "Number of bags", babySeat: "Need a baby seat", flightOrTrainNumber: "Optional flight or train number", departureDateTime: "Departure date and time", eventAddress: "Event address", eventDate: "Event date", pickupTime: "Desired pickup time", returnTime: "Return time", company: "Company name", contactName: "Contact name", businessEmail: "Business email", invoiceNeeded: "Need an invoice", tripFrequency: "Trip", comment: "Optional comment" },
       options: { yes: "Yes", no: "No", dayHospital: "Day hospital", consultation: "Consultation", other: "Other", oneTime: "One-time", recurring: "Recurring" },
@@ -209,8 +214,8 @@ export const translations = {
     faq: { eyebrow: "FAQ", title: "Frequently asked questions" }
   },
   es: {
-    nav: { home: "Inicio", services: "Servicios", booking: "Reservar", fleet: "Flota", reviews: "Opiniones", destinations: "Destinos", faq: "FAQ", contact: "Contacto" },
-    common: { call: "Llamar", whatsapp: "WhatsApp", book: "Reservar", quote: "Pedir presupuesto", learnMore: "Mas informacion", continue: "Continuar", back: "Volver", send: "Enviar", edit: "Modificar", choose: "Elegir" },
+    nav: { home: "Inicio", services: "Servicios", booking: "Reservar", fleet: "Flota", reviews: "Opiniones", destinations: "Taxis socios", faq: "FAQ", contact: "Contacto", more: "Info util" },
+    common: { call: "Llamar", whatsapp: "WhatsApp", book: "Reservar", quote: "Pedir presupuesto", learnMore: "Mas informacion", continue: "Continuar", back: "Volver", send: "Enviar", edit: "Modificar", choose: "Elegir", close: "Ocultar", showServices: "Mostrar servicios" },
     headerSubtitle: "Taxi autorizado, estaciones y aeropuertos",
     footerText: "Taxi autorizado desde Gandelu, Crezancy y la zona de Chateau-Thierry para transporte medico, estaciones, aeropuertos, trayectos privados y profesionales.",
     legal: "Legal",
@@ -240,6 +245,7 @@ export const translations = {
       successTitle: "Su solicitud ha sido enviada.",
       successText: "Gracias, hemos recibido su solicitud. Nuestro equipo la revisara y respondera lo antes posible. Se le ha enviado un email de resumen.",
       newRequest: "Enviar una nueva solicitud",
+      showComfort: "Ver equipamiento",
       comfortItems: ["Silla bebe 360 convertible", "Elevador", "Cosy bebe", "Almohada de viaje", "Nevera de compresion (-20 deg C)", "Toma 220V", "Enganche", "Portabicicletas hasta 3 bicicletas"],
       fields: { fullName: "Nombre y apellido", email: "Email", phone: "Telefono", pickupAddress: "Direccion de recogida", destinationAddress: "Direccion de llegada", appointmentReason: "Motivo de la cita", appointmentReasonOther: "Precise el motivo", appointmentDate: "Fecha de la cita", appointmentTime: "Hora de la cita", passengers: "Numero de pasajeros", luggage: "Numero de maletas", babySeat: "Necesita silla bebe", flightOrTrainNumber: "Numero de vuelo o tren opcional", departureDateTime: "Fecha y hora de salida", eventAddress: "Direccion del evento", eventDate: "Fecha del evento", pickupTime: "Hora de recogida deseada", returnTime: "Hora de regreso", company: "Empresa", contactName: "Persona de contacto", businessEmail: "Email profesional", invoiceNeeded: "Necesita factura", tripFrequency: "Trayecto", comment: "Comentario opcional" },
       options: { yes: "Si", no: "No", dayHospital: "Hospital de dia", consultation: "Consulta", other: "Otro", oneTime: "Puntual", recurring: "Recurrente" },
@@ -251,8 +257,8 @@ export const translations = {
     faq: { eyebrow: "FAQ", title: "Preguntas frecuentes" }
   },
   de: {
-    nav: { home: "Start", services: "Services", booking: "Buchen", fleet: "Flotte", reviews: "Bewertungen", destinations: "Ziele", faq: "FAQ", contact: "Kontakt" },
-    common: { call: "Anrufen", whatsapp: "WhatsApp", book: "Buchen", quote: "Angebot anfragen", learnMore: "Mehr erfahren", continue: "Weiter", back: "Zuruck", send: "Senden", edit: "Andern", choose: "Auswahlen" },
+    nav: { home: "Start", services: "Services", booking: "Buchen", fleet: "Flotte", reviews: "Bewertungen", destinations: "Partner-Taxis", faq: "FAQ", contact: "Kontakt", more: "Infos" },
+    common: { call: "Anrufen", whatsapp: "WhatsApp", book: "Buchen", quote: "Angebot anfragen", learnMore: "Mehr erfahren", continue: "Weiter", back: "Zuruck", send: "Senden", edit: "Andern", choose: "Auswahlen", close: "Ausblenden", showServices: "Services anzeigen" },
     headerSubtitle: "Zugelassenes Taxi, Bahnhofe und Flughafen",
     footerText: "Zugelassenes Taxi ab Gandelu, Crezancy und Chateau-Thierry fur medizinische Fahrten, Bahnhofe, Flughafen, private Fahrten und Geschaftsreisen.",
     legal: "Rechtliches",
@@ -282,6 +288,7 @@ export const translations = {
       successTitle: "Ihre Anfrage wurde gesendet.",
       successText: "Vielen Dank, wir haben Ihre Anfrage erhalten. Unser Team pruft sie und antwortet schnellstmoglich. Eine Zusammenfassung wurde per E-Mail gesendet.",
       newRequest: "Neue Anfrage senden",
+      showComfort: "Ausstattung anzeigen",
       comfortItems: ["360-Babysitz", "Sitzerhohung", "Baby-Cosy", "Reisekissen", "Kompressionskuhlbox (-20 deg C)", "220V Steckdose", "Anhangerkupplung", "Fahrradtrager bis 3 Fahrrader"],
       fields: { fullName: "Vor- und Nachname", email: "E-Mail", phone: "Telefon", pickupAddress: "Abholadresse", destinationAddress: "Zieladresse", appointmentReason: "Grund des Termins", appointmentReasonOther: "Grund angeben", appointmentDate: "Termindatum", appointmentTime: "Terminzeit", passengers: "Anzahl Fahrgaste", luggage: "Anzahl Gepackstucke", babySeat: "Babysitz benotigt", flightOrTrainNumber: "Flug- oder Zugnummer optional", departureDateTime: "Abfahrtsdatum und Uhrzeit", eventAddress: "Eventadresse", eventDate: "Eventdatum", pickupTime: "Gewunschte Abholzeit", returnTime: "Ruckfahrtzeit", company: "Firmenname", contactName: "Kontaktname", businessEmail: "Geschaftliche E-Mail", invoiceNeeded: "Rechnung benotigt", tripFrequency: "Fahrt", comment: "Optionaler Kommentar" },
       options: { yes: "Ja", no: "Nein", dayHospital: "Tagesklinik", consultation: "Sprechstunde", other: "Andere", oneTime: "Einmalig", recurring: "Wiederkehrend" },
