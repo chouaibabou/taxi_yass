@@ -1,4 +1,12 @@
-export const reviews = [
+export type Review = {
+  name: string;
+  rating: number;
+  dateLabel: string;
+  text: string;
+  source: "Google";
+};
+
+export const reviews: Review[] = [
   {
     name: "Atypique Entertainment",
     rating: 5,

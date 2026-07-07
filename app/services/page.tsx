@@ -1,19 +1,18 @@
+﻿"use client";
+
 import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { services } from "@/data/services";
-import { fleet } from "@/data/fleet";
+import { getLocalizedFleet, getLocalizedServices } from "@/data/localized";
 import { siteConfig, whatsappUrl } from "@/data/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { pageMetadata } from "@/lib/metadata";
-
-export const metadata = pageMetadata(
-  "Services taxi Château-Thierry - Taxi conventionné, gares, aéroports et entreprise",
-  "Découvrez les services Yas'Taxii dans l'agglomération de Château-Thierry : taxi conventionné, transferts aéroports CDG Orly Beauvais, gares, trajets professionnels, tourisme et assistance.",
-  "/services"
-);
+import { useLocale } from "@/lib/locale-context";
 
 export default function ServicesPage() {
+  const locale = useLocale();
+  const services = getLocalizedServices(locale);
+  const fleet = getLocalizedFleet(locale);
+
   return (
     <>
       <section className="relative isolate overflow-hidden bg-taxi-black py-20 text-white">
@@ -21,12 +20,12 @@ export default function ServicesPage() {
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div className="grid content-center">
             <p className="inline-flex w-fit rounded-md bg-taxi-gold px-3 py-2 text-sm font-black uppercase tracking-wide text-taxi-black">Services Yas&apos;Taxii</p>
-            <h1 className="mt-3 text-4xl font-black leading-tight sm:text-5xl">Taxi conventionné, navettes et toutes distances</h1>
+            <h1 className="mt-3 text-4xl font-black leading-tight sm:text-5xl">Taxi conventionnÃ©, navettes et toutes distances</h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">
-              Des solutions de transport claires pour l&apos;agglomération de Château-Thierry, les gares, les aéroports, les trajets médicaux et les déplacements professionnels.
+              Des solutions de transport claires pour l&apos;agglomÃ©ration de ChÃ¢teau-Thierry, les gares, les aÃ©roports, les trajets mÃ©dicaux et les dÃ©placements professionnels.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/#reserver">Réserver / demander un devis</ButtonLink>
+              <ButtonLink href="/#reserver">RÃ©server / demander un devis</ButtonLink>
               <ButtonLink href={whatsappUrl()} variant="whatsapp" target="_blank">
                 WhatsApp
               </ButtonLink>
@@ -48,15 +47,15 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-3xl">
-              <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Nos différents services</p>
+              <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Nos diffÃ©rents services</p>
               <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Des prestations claires pour chaque besoin de transport</h2>
               <p className="mt-4 leading-7 text-neutral-600">
-                Quelle que soit votre destination, Yas&apos;Taxii organise votre trajet avec ponctualité, confort et sérieux, dans l&apos;agglomération de Château-Thierry, le département de l&apos;Aisne et les secteurs voisins.
+                Quelle que soit votre destination, Yas&apos;Taxii organise votre trajet avec ponctualitÃ©, confort et sÃ©rieux, dans l&apos;agglomÃ©ration de ChÃ¢teau-Thierry, le dÃ©partement de l&apos;Aisne et les secteurs voisins.
               </p>
             </div>
             <div className="rounded-lg bg-taxi-black p-4 text-white">
               <div className="text-3xl font-black text-taxi-gold">24/7</div>
-              <div className="text-sm font-bold text-white/75">Réservation et devis rapide</div>
+              <div className="text-sm font-bold text-white/75">RÃ©servation et devis rapide</div>
             </div>
           </div>
 
@@ -74,7 +73,7 @@ export default function ServicesPage() {
                   <h3 className="text-xl font-black text-taxi-black">{title}</h3>
                   <p className="text-sm leading-6 text-neutral-600">{description}</p>
                   <span className="inline-flex items-center gap-2 text-sm font-black text-taxi-black">
-                    Détails <ArrowRight className="transition group-hover:translate-x-1" size={16} />
+                    DÃ©tails <ArrowRight className="transition group-hover:translate-x-1" size={16} />
                   </span>
                 </div>
               </a>
@@ -86,8 +85,8 @@ export default function ServicesPage() {
       <section className="bg-taxi-cream py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
-            <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Services détaillés</p>
-            <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Chaque service en détail</h2>
+            <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Services dÃ©taillÃ©s</p>
+            <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Chaque service en dÃ©tail</h2>
           </div>
           <div className="grid gap-8">
             {services.map(({ id, slug, title, details, image, keywords }, index) => (
@@ -128,19 +127,25 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-3xl">
-              <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Véhicules disponibles</p>
+              <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">VÃ©hicules disponibles</p>
               <h2 className="mt-2 text-3xl font-black sm:text-4xl">Taxi et Taxi Van pour adapter le trajet au nombre de passagers</h2>
-              <p className="mt-4 text-white/70">Une flotte simple à comprendre, orientée confort et trajets toutes distances.</p>
+              <p className="mt-4 text-white/70">Une flotte simple Ã  comprendre, orientÃ©e confort et trajets toutes distances.</p>
             </div>
             <ButtonLink href="/#reserver" variant="secondary">
-              Réserver maintenant
+              RÃ©server maintenant
             </ButtonLink>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {fleet.map(({ id, name, passengers, description, image }) => (
               <Card key={id} className="overflow-hidden border-white/10 bg-white/[0.06] text-white shadow-2xl">
-                <div className="relative h-64 bg-[radial-gradient(circle_at_50%_20%,rgba(244,176,0,0.16),transparent_45%),linear-gradient(180deg,#ffffff,#f4f4f4)]">
-                  <Image src={image} alt={`Véhicule ${name} Yas'Taxii`} fill className="object-contain p-5" sizes="(min-width: 768px) 50vw, 100vw" />
+                <div className="relative h-80 overflow-hidden bg-neutral-100 sm:h-96">
+                  <Image
+                    src={image}
+                    alt={`VÃ©hicule ${name} Yas'Taxii`}
+                    fill
+                    className="object-cover object-center transition duration-500 hover:scale-105"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                  />
                 </div>
                 <div className="grid gap-4 p-6">
                   <h3 className="text-2xl font-black">{name}</h3>
@@ -157,3 +162,5 @@ export default function ServicesPage() {
     </>
   );
 }
+
+

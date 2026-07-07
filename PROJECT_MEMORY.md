@@ -81,7 +81,7 @@ Seulement deux categories :
 - Eco : id technique pour le vehicule affiche comme "Taxi", 1 a 4 passagers.
 - Van : id technique pour le vehicule affiche comme "Taxi Van", 1 a 8 passagers.
 
-Images actuelles : `public/images/fleet-eco.webp` et `public/images/fleet-van.jpeg`.
+Images actuelles : `public/images/fleet-taxi.jpeg` et `public/images/fleet-taxi-van.jpeg`.
 
 Ne pas ajouter Berline ou SUV pour le moment.
 
@@ -169,6 +169,8 @@ Structure actuelle :
 Les avis mockes initiaux ont ete remplaces par 9 vrais avis Google lisibles depuis les captures du fichier technique PDF/DOCX. Les captures tronquees n'ont pas ete inventees.
 
 Ne pas scraper Google Maps. Evolution possible : Google Places API ou Google Business Profile API si acces disponible.
+
+Integration Google Places ajoutee via `/api/google-reviews` : la cle reste cote serveur dans `GOOGLE_PLACES_API_KEY` et le lieu dans `GOOGLE_PLACE_ID`. La homepage et la page `/avis` chargent automatiquement la note Google, le nombre total d'avis et quelques avis renvoyes par Places API, avec fallback sur `data/reviews.ts` si Google est indisponible, non configure ou quota depasse. Places API ne donne pas tous les avis ; pour recuperer/gerer tous les avis, prevoir plus tard Google Business Profile API avec OAuth.
 
 Liens Google a modifier dans `data/site.ts` :
 
@@ -300,3 +302,13 @@ SEO : ajout de mots-cles locaux supplementaires dans `data/site.ts` pour Chateau
 Email : envoi reel branche via SMTP Brevo avec `nodemailer`. Les routes `/api/booking`, `/api/contact` et `/api/destination-request` envoient maintenant les messages vers `OWNER_EMAIL`. L'adresse de reception Yas'Taxii est `yastaxiireservations@gmail.com`. Les secrets doivent rester uniquement dans `.env.local`; `.env.local.example` documente `SMTP_HOST=smtp-relay.brevo.com`, `SMTP_PORT=587`, `SMTP_USER`, `SMTP_PASSWORD`, `OWNER_EMAIL` et `EMAIL_FROM`.
 
 Email client : chaque formulaire envoie aussi un accuse de reception au client quand une adresse email est fournie. La reservation utilise `emails/customer-confirmation.ts`; les formulaires contact et destinations envoient une confirmation simple depuis leurs routes API respectives.
+
+Multilingue : ajout d'une premiere architecture i18n sans casser la racine FR. Les langues disponibles sont FR, EN, ES et DE. La racine `/` reste en francais, avec routes localisees `/en`, `/es`, `/de` et variantes pour services, destinations, avis, pages legales et Portes de la Champagne. Le header inclut un selecteur de langue. Les textes principaux de la home, du wizard, des services, de la flotte, de la FAQ, du contact et des donnees services/flotte/FAQ sont traduits via `data/translations.ts`, `data/localized.ts`, `lib/i18n.ts` et `lib/locale-context.tsx`. Le sitemap inclut les routes multilingues.
+
+UX multilingue : le selecteur de langue du header est maintenant un menu deroulant premium compact avec drapeaux dessines en CSS, nom complet, code langue discret et chevron dore. Les noms/codes sont geres dans `lib/i18n.ts`, le rendu visuel dans `components/layout/Header.tsx`.
+
+Flotte images : les visuels Taxi et Taxi Van ont ete remplaces par les nouvelles photos client `public/images/fleet-taxi.jpeg` et `public/images/fleet-taxi-van.jpeg`.
+
+Hero : le fond d'accueil est maintenant un slider automatique avec fondu. Il garde l'image existante `hero-yastaxi-vignes-aeroport.jpeg` et ajoute trois images client : `hero-yastaxi-destinations-europe.jpeg`, `hero-yastaxi-evenement.jpeg` et `hero-yastaxi-gares-aeroports.jpeg`.
+
+Flotte design : les images Taxi et Taxi Van remplissent maintenant davantage les cartes sur la home et sur `/services`, avec zone visuelle plus haute et cadrage `object-cover` pour eviter les petits visuels centres dans un grand fond blanc.

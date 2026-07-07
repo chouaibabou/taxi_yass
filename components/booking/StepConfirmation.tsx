@@ -1,3 +1,5 @@
+import { getTranslations } from "@/data/translations";
+import { useLocale } from "@/lib/locale-context";
 import { Button } from "@/components/ui/Button";
 import { BookingDraft } from "@/components/booking/BookingWizard";
 
@@ -7,37 +9,11 @@ type Props = {
   onSend: () => void;
 };
 
-const labels: Record<string, string> = {
-  vehicle: "Véhicule choisi",
-  service: "Prestation choisie",
-  fullName: "Nom et prénom",
-  company: "Société",
-  contactName: "Contact",
-  email: "Email",
-  businessEmail: "Email professionnel",
-  phone: "Téléphone",
-  pickupAddress: "Prise en charge",
-  destinationAddress: "Arrivée",
-  eventAddress: "Événement / rendez-vous",
-  appointmentReason: "Motif",
-  appointmentReasonOther: "Précision du motif",
-  appointmentDate: "Date rendez-vous",
-  appointmentTime: "Heure rendez-vous",
-  departureDateTime: "Départ",
-  eventDate: "Date",
-  pickupTime: "Heure prise en charge",
-  returnTime: "Heure retour",
-  passengers: "Passagers",
-  luggage: "Bagages",
-  babySeat: "Siège bébé",
-  flightOrTrainNumber: "Vol / train",
-  invoiceNeeded: "Facture",
-  tripFrequency: "Trajet",
-  comment: "Commentaire"
-};
-
 export function StepConfirmation({ draft, onBack, onSend }: Props) {
+  const locale = useLocale();
+  const t = getTranslations(locale);
   const entries = Object.entries(draft).filter(([, value]) => value);
+  const labels = t.booking.confirmationLabels as Record<string, string>;
   const formatValue = (key: string, value: unknown) => {
     if (key === "vehicle") {
       return value === "eco" ? "Taxi" : "Taxi Van";
@@ -49,7 +25,7 @@ export function StepConfirmation({ draft, onBack, onSend }: Props) {
   return (
     <div>
       <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
-        <div className="mb-4 text-lg font-black">Récapitulatif avant envoi</div>
+        <div className="mb-4 text-lg font-black">{t.booking.confirmTitle}</div>
         <dl className="grid gap-3 md:grid-cols-2">
           {entries.map(([key, value]) => (
             <div key={key} className="rounded-md bg-white p-3">
@@ -60,8 +36,12 @@ export function StepConfirmation({ draft, onBack, onSend }: Props) {
         </dl>
       </div>
       <div className="mt-6 flex justify-between gap-3">
-        <Button type="button" variant="ghost" onClick={onBack}>Modifier</Button>
-        <Button type="button" onClick={onSend}>Envoyer</Button>
+        <Button type="button" variant="ghost" onClick={onBack}>
+          {t.common.edit}
+        </Button>
+        <Button type="button" onClick={onSend}>
+          {t.common.send}
+        </Button>
       </div>
     </div>
   );
