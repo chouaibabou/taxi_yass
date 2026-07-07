@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { Baby, Bike, Cable, CheckCircle2, CircleDot, PlugZap, Snowflake, Sofa } from "lucide-react";
+import { Baby, Bike, Cable, CheckCircle2, ChevronDown, CircleDot, PlugZap, Snowflake, Sofa } from "lucide-react";
 import { useMemo, useState } from "react";
 import { FleetId } from "@/data/fleet";
 import { ServiceId } from "@/data/services";
@@ -28,6 +28,7 @@ export function BookingWizard() {
   const [step, setStep] = useState(1);
   const [draft, setDraft] = useState<BookingDraft>({ vehicle: "eco", service: "medical" });
   const [sent, setSent] = useState(false);
+  const [comfortOpen, setComfortOpen] = useState(false);
   const currentLabel = useMemo(() => t.booking.steps[step - 1], [step, t.booking.steps]);
 
   function resetWizard() {
@@ -52,7 +53,7 @@ export function BookingWizard() {
   }
 
   return (
-    <section id="reserver" className="bg-taxi-black py-20 text-white">
+    <section id="reserver" className="bg-taxi-black py-8 text-white">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">{t.booking.eyebrow}</p>
@@ -68,7 +69,17 @@ export function BookingWizard() {
             </div>
             <p className="text-sm text-white/65">{t.booking.comfortText}</p>
           </div>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <button
+            type="button"
+            className="mt-5 flex w-full items-center justify-center gap-2 rounded-md border border-taxi-gold bg-taxi-gold px-4 py-3 text-sm font-black text-taxi-black md:hidden"
+            aria-expanded={comfortOpen}
+            aria-controls="booking-comfort-list"
+            onClick={() => setComfortOpen((current) => !current)}
+          >
+            {comfortOpen ? t.common.close : t.booking.showComfort}
+            <ChevronDown className={`transition duration-200 ${comfortOpen ? "rotate-180" : ""}`} size={20} />
+          </button>
+          <div id="booking-comfort-list" className={`${comfortOpen ? "grid" : "hidden"} mt-5 gap-3 md:grid md:grid-cols-2 lg:grid-cols-4`}>
             {t.booking.comfortItems.map((label, index) => {
               const Icon = comfortIcons[index];
               return (
@@ -116,3 +127,4 @@ export function BookingWizard() {
     </section>
   );
 }
+

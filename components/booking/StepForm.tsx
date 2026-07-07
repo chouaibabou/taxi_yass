@@ -39,6 +39,13 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
       nextErrors.appointmentReasonOther = t.booking.errors.precise;
     }
 
+    if (formValues.passengers) {
+      const passengerCount = Number(formValues.passengers);
+      if (!Number.isInteger(passengerCount) || passengerCount < 1 || passengerCount > passengerMax) {
+        nextErrors.passengers = draft.vehicle === "van" ? "Le Taxi Van accepte entre 1 et 8 passagers." : "Le Taxi accepte entre 1 et 4 passagers.";
+      }
+    }
+
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length === 0) {
       setDraft({ ...draft, ...(formValues as BookingDraft) });
@@ -48,15 +55,27 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
 
   return (
     <form onSubmit={onSubmit} className="grid gap-4">
+      <p className="text-right text-xs font-medium text-neutral-500">
+        <span className="text-red-600">*</span> Champs obligatoires
+      </p>
       <div className="grid gap-4 md:grid-cols-2">
         {fields.map((field) =>
           field.kind === "address" ? (
-            <AddressAutocomplete key={field.name} id={field.name} name={field.name} label={field.label} defaultValue={String(draft[field.name as keyof BookingDraft] || "")} error={errors[field.name]} />
+            <AddressAutocomplete
+              key={field.name}
+              id={field.name}
+              name={field.name}
+              label={field.label}
+              required={field.required}
+              defaultValue={String(draft[field.name as keyof BookingDraft] || "")}
+              error={errors[field.name]}
+            />
           ) : field.kind === "select" ? (
             <label key={field.name} className="grid gap-2 text-sm font-semibold">
-              {field.label}
+              <FieldLabel label={field.label} required={field.required} />
               <select
                 name={field.name}
+                required={field.required}
                 defaultValue={String(draft[field.name as keyof BookingDraft] || "")}
                 onChange={field.name === "appointmentReason" ? (event) => setAppointmentReason(event.target.value) : undefined}
                 className="h-12 rounded-md border border-neutral-200 bg-white px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20"
@@ -70,14 +89,35 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
               </select>
               {errors[field.name] ? <span className="text-xs font-medium text-red-600">{errors[field.name]}</span> : null}
             </label>
+          ) : field.name === "passengers" ? (
+            <label key={field.name} className="grid gap-2 text-sm font-semibold">
+              <FieldLabel label={`${field.label} (${draft.vehicle === "van" ? "1-8" : "1-4"})`} required={field.required} />
+              <select
+                name={field.name}
+                required={field.required}
+                defaultValue={
+                  Number(draft.passengers || "0") >= 1 && Number(draft.passengers || "0") <= passengerMax
+                    ? String(draft.passengers)
+                    : ""
+                }
+                className="h-12 rounded-md border border-neutral-200 bg-white px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20"
+              >
+                <option value="">{t.common.choose}</option>
+                {Array.from({ length: passengerMax }, (_, index) => String(index + 1)).map((passengerCount) => (
+                  <option key={passengerCount} value={passengerCount}>
+                    {passengerCount}
+                  </option>
+                ))}
+              </select>
+              {errors[field.name] ? <span className="text-xs font-medium text-red-600">{errors[field.name]}</span> : null}
+            </label>
           ) : (
             <label key={field.name} className="grid gap-2 text-sm font-semibold">
-              {field.name === "passengers" ? `${field.label} (${draft.vehicle === "van" ? "1-8" : "1-4"})` : field.label}
+              <FieldLabel label={field.label} required={field.required} />
               <input
                 name={field.name}
                 type={field.type || "text"}
-                min={field.name === "passengers" ? 1 : undefined}
-                max={field.name === "passengers" ? passengerMax : undefined}
+                required={field.required}
                 defaultValue={String(draft[field.name as keyof BookingDraft] || "")}
                 className="h-12 rounded-md border border-neutral-200 px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20"
               />
@@ -87,9 +127,10 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
         )}
         {service === "medical" && appointmentReason === t.booking.options.other ? (
           <label className="grid gap-2 text-sm font-semibold">
-            {t.booking.fields.appointmentReasonOther}
+            <FieldLabel label={t.booking.fields.appointmentReasonOther} required />
             <input
               name="appointmentReasonOther"
+              required
               defaultValue={String(draft.appointmentReasonOther || "")}
               className="h-12 rounded-md border border-neutral-200 px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20"
             />
@@ -119,6 +160,15 @@ type Field = {
   kind?: "input" | "address" | "select";
   options?: string[];
 };
+
+function FieldLabel({ label, required }: { label: string; required?: boolean }) {
+  return (
+    <span>
+      {label}
+      {required ? <span className="ml-1 text-red-600">*</span> : null}
+    </span>
+  );
+}
 
 function commonClientFields(t: ReturnType<typeof getTranslations>): Field[] {
   return [

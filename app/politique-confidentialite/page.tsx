@@ -1,10 +1,10 @@
-import { pageMetadata } from "@/lib/metadata";
+﻿import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata("Politique de confidentialité - Yas'Taxii", "Politique de confidentialité du site Yas'Taxii.", "/politique-confidentialite");
 
 export default function PrivacyPage() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-8">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-black text-taxi-black">Politique de confidentialité</h1>
         <div className="mt-8 grid gap-4 leading-7 text-neutral-700">
@@ -16,3 +16,4 @@ export default function PrivacyPage() {
     </section>
   );
 }
+

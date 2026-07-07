@@ -8,7 +8,10 @@ type AddressAutocompleteProps = React.InputHTMLAttributes<HTMLInputElement> & {
 export function AddressAutocomplete({ label, error, id, ...props }: AddressAutocompleteProps) {
   return (
     <label className="grid gap-2 text-sm font-semibold text-neutral-900" htmlFor={id}>
-      {label}
+      <span>
+        {label}
+        {props.required ? <span className="ml-1 text-red-600">*</span> : null}
+      </span>
       <input
         id={id}
         {...props}

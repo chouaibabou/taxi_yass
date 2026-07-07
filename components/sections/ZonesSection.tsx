@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { MapPinned } from "lucide-react";
 import { zones } from "@/data/zones";
@@ -8,7 +8,7 @@ import { trackConversion } from "@/lib/tracking";
 
 export function ZonesSection() {
   return (
-    <section id="zones" className="bg-taxi-cream py-20">
+    <section id="zones" className="bg-taxi-cream py-8">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
           <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Zones desservies</p>
@@ -29,3 +29,4 @@ export function ZonesSection() {
     </section>
   );
 }
+

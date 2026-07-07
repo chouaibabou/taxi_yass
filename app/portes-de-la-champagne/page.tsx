@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { ArrowRight, Castle, ExternalLink, Landmark, MapPinned, Route, Wine } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -49,7 +49,7 @@ export const metadata = pageMetadata(
 export default function PortesDeLaChampagnePage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-taxi-black py-20 text-white">
+      <section className="relative isolate overflow-hidden bg-taxi-black py-8 text-white">
         <Image src="/images/hero-yastaxi-vignes-aeroport.jpeg" alt="Taxi vers Les Portes de la Champagne" fill priority className="object-cover opacity-45" sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-r from-taxi-black via-taxi-black/86 to-taxi-black/30" />
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
@@ -57,7 +57,7 @@ export default function PortesDeLaChampagnePage() {
             <p className="inline-flex w-fit rounded-md bg-taxi-gold px-3 py-2 text-sm font-black uppercase tracking-wide text-taxi-black">Partenariat tourisme</p>
             <h1 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">Découvrir Les Portes de la Champagne en taxi</h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-white/78">
-              Entre Champagne-Ardenne et Île-de-France, Yas&apos;Taxii vous accompagne sur les routes d&apos;une destination mêlant vignes, patrimoine, vallée de la Marne et visites culturelles.
+              Entre Champagne-Ardenne et �Zle-de-France, Yas&apos;Taxii vous accompagne sur les routes d&apos;une destination mêlant vignes, patrimoine, vallée de la Marne et visites culturelles.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/#reserver">Réserver un taxi</ButtonLink>
@@ -74,7 +74,7 @@ export default function PortesDeLaChampagnePage() {
         </div>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Expérience locale</p>
@@ -95,7 +95,7 @@ export default function PortesDeLaChampagnePage() {
         </div>
       </section>
 
-      <section className="bg-taxi-cream py-20">
+      <section className="bg-taxi-cream py-8">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div>
             <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Idées de trajets</p>
@@ -134,3 +134,4 @@ export default function PortesDeLaChampagnePage() {
     </>
   );
 }
+

@@ -1,4 +1,4 @@
-import { MapPinned } from "lucide-react";
+﻿import { MapPinned } from "lucide-react";
 import { zones } from "@/data/zones";
 import { ButtonLink } from "@/components/ui/Button";
 import { DestinationsRequestForm } from "@/components/sections/DestinationsRequestForm";
@@ -13,7 +13,7 @@ export const metadata = pageMetadata(
 export default function DestinationsPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-taxi-black py-20 text-white">
+      <section className="relative isolate overflow-hidden bg-taxi-black py-8 text-white">
         <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:42px_42px]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="inline-flex rounded-md bg-taxi-gold px-3 py-2 text-sm font-black uppercase tracking-wide text-taxi-black">
@@ -30,7 +30,7 @@ export default function DestinationsPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Zones partenaires</p>
@@ -54,3 +54,4 @@ export default function DestinationsPage() {
     </>
   );
 }
+

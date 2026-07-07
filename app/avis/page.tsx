@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+﻿import { ExternalLink } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { ReviewsPageGrid } from "@/components/sections/ReviewsPageGrid";
@@ -13,7 +13,7 @@ export const metadata = pageMetadata(
 export default function AvisPage() {
   return (
     <>
-      <section className="bg-taxi-black py-20 text-white">
+      <section className="bg-taxi-black py-8 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="inline-flex rounded-md bg-taxi-gold px-3 py-2 text-sm font-black uppercase tracking-wide text-taxi-black">
             Avis clients
@@ -33,7 +33,7 @@ export default function AvisPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ReviewsPageGrid />
         </div>
@@ -41,3 +41,4 @@ export default function AvisPage() {
     </>
   );
 }
+

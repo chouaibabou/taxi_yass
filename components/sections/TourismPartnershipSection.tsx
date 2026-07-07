@@ -1,10 +1,10 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { ArrowRight, CalendarDays, MapPinned, Wine } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 
 export function TourismPartnershipSection() {
   return (
-    <section className="bg-taxi-cream py-20">
+    <section className="bg-taxi-cream py-8">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
         <div className="grid content-center">
           <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Partenariat local</p>
@@ -54,3 +54,4 @@ export function TourismPartnershipSection() {
     </section>
   );
 }
+
