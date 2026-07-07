@@ -4,8 +4,9 @@ import { CheckCircle2, MapPinned } from "lucide-react";
 import type React from "react";
 import { FormEvent, useState } from "react";
 import { zones } from "@/data/zones";
-import { fleet } from "@/data/fleet";
-import { bookingServices } from "@/data/services";
+import { getLocalizedBookingServices, getLocalizedFleet } from "@/data/localized";
+import { getPageTranslations } from "@/data/page-translations";
+import { useLocale } from "@/lib/locale-context";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 
@@ -17,6 +18,11 @@ type FormState = {
 };
 
 export function DestinationsRequestForm() {
+  const locale = useLocale();
+  const pt = getPageTranslations(locale);
+  const page = pt.destinations;
+  const fleet = getLocalizedFleet(locale);
+  const bookingServices = getLocalizedBookingServices(locale);
   const [formState, setFormState] = useState<FormState>({
     zone: zones[0],
     vehicle: "eco",
@@ -57,18 +63,16 @@ export function DestinationsRequestForm() {
       return;
     }
 
-    setError("Merci de vérifier les champs obligatoires.");
+    setError(page.error);
   }
 
   return (
     <section className="bg-taxi-cream py-8">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
         <div>
-          <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Destinations partenaires</p>
-          <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Choisissez une zone, nous organisons la demande</h2>
-          <p className="mt-4 leading-7 text-neutral-700">
-            Yas&apos;Taxii travaille avec d&apos;autres chauffeurs partenaires sur certains secteurs. Sélectionnez la ville, le véhicule souhaité et votre besoin : la demande arrive avec la zone choisie pour organiser rapidement la réservation.
-          </p>
+          <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">{page.formEyebrow}</p>
+          <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">{page.formTitle}</h2>
+          <p className="mt-4 leading-7 text-neutral-700">{page.formText}</p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
             {zones.map((zone) => (
@@ -89,30 +93,30 @@ export function DestinationsRequestForm() {
           {sent ? (
             <div className="grid justify-items-center gap-5 py-12 text-center">
               <CheckCircle2 className="text-taxi-green" size={72} />
-              <h3 className="text-2xl font-black text-taxi-black">Votre demande de destination a bien été envoyée !</h3>
+              <h3 className="text-2xl font-black text-taxi-black">{page.successTitle}</h3>
               <p className="max-w-xl leading-7 text-neutral-700">
-                Nous avons bien reçu votre demande pour {formState.zone}. Nous allons l&apos;étudier et vous répondre rapidement.
+                {page.successTextPrefix} {formState.zone}. {page.successTextSuffix}
               </p>
               <Button type="button" onClick={() => setSent(false)}>
-                Envoyer une nouvelle demande
+                {page.newRequest}
               </Button>
             </div>
           ) : (
             <form className="grid gap-5" onSubmit={onSubmit}>
               <p className="text-right text-xs font-medium text-neutral-500">
-                <span className="text-red-600">*</span> Champs obligatoires
+                <span className="text-red-600">*</span> {pt.requiredFields}
               </p>
               <div className="rounded-lg bg-taxi-black p-4 text-white">
                 <div className="flex items-center gap-3 text-sm font-black text-taxi-gold">
                   <MapPinned size={22} />
-                  Zone sélectionnée
+                  {page.selectedZone}
                 </div>
                 <div className="mt-2 text-2xl font-black">{formState.zone}</div>
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <label className="grid gap-2 text-sm font-semibold text-taxi-black">
-                  <FieldLabel label="Choisir le véhicule" required />
+                  <FieldLabel label={page.vehicle} required />
                   <select
                     value={formState.vehicle}
                     onChange={(event) => updateVehicle(event.target.value as "eco" | "van")}
@@ -127,7 +131,7 @@ export function DestinationsRequestForm() {
                 </label>
 
                 <label className="grid gap-2 text-sm font-semibold text-taxi-black">
-                  <FieldLabel label="Votre besoin" required />
+                  <FieldLabel label={page.need} required />
                   <select
                     value={formState.need}
                     onChange={(event) => setFormState((current) => ({ ...current, need: event.target.value }))}
@@ -143,11 +147,11 @@ export function DestinationsRequestForm() {
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
-                <Input name="fullName" label="Nom et prénom" required />
-                <Input name="email" type="email" label="Email" required />
-                <Input name="phone" label="Téléphone" required />
+                <Input name="fullName" label={page.fullName} required />
+                <Input name="email" type="email" label={page.email} required />
+                <Input name="phone" label={page.phone} required />
                 <label className="grid gap-2 text-sm font-semibold text-taxi-black">
-                  <FieldLabel label={`Nombre de passagers (${formState.vehicle === "eco" ? "1 à 4" : "1 à 8"})`} required />
+                  <FieldLabel label={`${page.passengerCount} (${formState.vehicle === "eco" ? "1-4" : "1-8"})`} required />
                   <select
                     name="passengers"
                     value={formState.passengers}
@@ -162,19 +166,19 @@ export function DestinationsRequestForm() {
                     ))}
                   </select>
                 </label>
-                <Input name="pickupAddress" label="Adresse de prise en charge" required />
-                <Input name="destinationAddress" label="Adresse d'arrivée" required />
-                <Input name="dateTime" type="datetime-local" label="Date et heure souhaitées" />
+                <Input name="pickupAddress" label={page.pickup} required />
+                <Input name="destinationAddress" label={page.destination} required />
+                <Input name="dateTime" type="datetime-local" label={page.dateTime} />
               </div>
 
               <label className="grid gap-2 text-sm font-semibold text-taxi-black">
-                Commentaire optionnel
+                {page.comment}
                 <textarea name="comment" rows={4} className="rounded-md border border-neutral-200 px-4 py-3 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20" />
               </label>
 
               {error ? <div className="rounded-md bg-red-50 p-3 text-sm font-bold text-red-700">{error}</div> : null}
 
-              <Button type="submit">Envoyer la demande</Button>
+              <Button type="submit">{page.submit}</Button>
             </form>
           )}
         </Card>

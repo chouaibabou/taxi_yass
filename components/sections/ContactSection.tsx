@@ -4,6 +4,7 @@ import { MapPin, Phone } from "lucide-react";
 import type React from "react";
 import { FormEvent, useState } from "react";
 import { siteConfig } from "@/data/site";
+import { getPageTranslations } from "@/data/page-translations";
 import { getTranslations } from "@/data/translations";
 import { useLocale } from "@/lib/locale-context";
 import { Button } from "@/components/ui/Button";
@@ -13,6 +14,7 @@ export function ContactSection() {
   const [sent, setSent] = useState(false);
   const locale = useLocale();
   const t = getTranslations(locale);
+  const pt = getPageTranslations(locale);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -47,7 +49,7 @@ export function ContactSection() {
           ) : (
             <form className="grid gap-4" onSubmit={onSubmit}>
               <p className="text-right text-xs font-medium text-neutral-500">
-                <span className="text-red-600">*</span> Champs obligatoires
+                <span className="text-red-600">*</span> {pt.requiredFields}
               </p>
               <Input name="fullName" label={t.booking.fields.fullName} required />
               <Input name="email" type="email" label={t.booking.fields.email} required />

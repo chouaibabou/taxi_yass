@@ -2,10 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { Review, reviews } from "@/data/reviews";
+import { getPageTranslations } from "@/data/page-translations";
 import { siteConfig } from "@/data/site";
+import { useLocale } from "@/lib/locale-context";
 import { ReviewCard } from "@/components/sections/ReviewsSection";
 
 export function ReviewsPageGrid() {
+  const locale = useLocale();
+  const page = getPageTranslations(locale).reviews;
   const [googleRating, setGoogleRating] = useState(siteConfig.googleRating);
   const [googleReviewCount, setGoogleReviewCount] = useState(siteConfig.googleReviewCount);
   const [displayReviews, setDisplayReviews] = useState<Review[]>(reviews);
@@ -47,11 +51,11 @@ export function ReviewsPageGrid() {
       <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
         <div>
           <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Google</p>
-          <h2 className="mt-2 text-3xl font-black text-taxi-black">Avis clients Google</h2>
+          <h2 className="mt-2 text-3xl font-black text-taxi-black">{page.googleTitle}</h2>
         </div>
         <div className="rounded-lg bg-taxi-cream p-4 text-sm text-neutral-700">
-          <strong>Google rating score: {googleRating.toFixed(1)}</strong> of 5, based on{" "}
-          <strong>{googleReviewCount} reviews</strong>
+          <strong>{page.score}: {googleRating.toFixed(1)}</strong>/5, {page.basedOn}{" "}
+          <strong>{googleReviewCount} {page.reviews}</strong>
         </div>
       </div>
 

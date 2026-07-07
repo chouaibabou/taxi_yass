@@ -328,3 +328,5 @@ Encodage : correction des textes accentues affiches en mojibake (`Ã©`, `Ã¢`,
 Header desktop : le menu desktop est simplifie pour reduire la densite visuelle. Il affiche Accueil, Reserver, Taxis partenaires, Infos utiles et Contact. Le menu Infos utiles regroupe Services, Flotte, Avis et FAQ. Le menu mobile garde une liste simple.
 
 Header UX : les menus deroulants desktop "Infos utiles" et langue sont maintenant ouvrables au clic, en plus du survol, pour eviter les problemes de navigation et permettre le changement de langue de maniere fiable.
+
+Multilingue : fin de traduction des pages visibles du site. Les pages Services, Avis, Taxis partenaires, Portes de la Champagne, Mentions legales et Politique de confidentialite utilisent maintenant des textes localises via `data/page-translations.ts` et des composants client dedies quand necessaire. Les liens internes des pages localisees restent dans la langue courante.

@@ -1,4 +1,5 @@
 import { FormEvent, useMemo, useState } from "react";
+import { getPageTranslations } from "@/data/page-translations";
 import { getTranslations } from "@/data/translations";
 import { useLocale } from "@/lib/locale-context";
 import { Button } from "@/components/ui/Button";
@@ -17,6 +18,7 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
   const [appointmentReason, setAppointmentReason] = useState(String(draft.appointmentReason || ""));
   const locale = useLocale();
   const t = getTranslations(locale);
+  const pt = getPageTranslations(locale);
   const service = draft.service || "medical";
   const submitLabel = service === "airport" || service === "business" ? t.common.quote : `${t.common.book} / ${t.common.quote}`;
   const passengerMax = draft.vehicle === "van" ? 8 : 4;
@@ -42,7 +44,7 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
     if (formValues.passengers) {
       const passengerCount = Number(formValues.passengers);
       if (!Number.isInteger(passengerCount) || passengerCount < 1 || passengerCount > passengerMax) {
-        nextErrors.passengers = draft.vehicle === "van" ? "Le Taxi Van accepte entre 1 et 8 passagers." : "Le Taxi accepte entre 1 et 4 passagers.";
+        nextErrors.passengers = draft.vehicle === "van" ? t.booking.errors.vanPassengers : t.booking.errors.taxiPassengers;
       }
     }
 
@@ -56,7 +58,7 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
   return (
     <form onSubmit={onSubmit} className="grid gap-4">
       <p className="text-right text-xs font-medium text-neutral-500">
-        <span className="text-red-600">*</span> Champs obligatoires
+        <span className="text-red-600">*</span> {pt.requiredFields}
       </p>
       <div className="grid gap-4 md:grid-cols-2">
         {fields.map((field) =>
