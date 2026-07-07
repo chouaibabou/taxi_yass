@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 
 export const metadata: Metadata = {
   ...pageMetadata(
-  "Yas'Taxii - Taxi conventionné Gandelu, Crézancy et Château-Thierry",
-  "Taxi conventionné de Gandelu, Crézancy et toute l'agglomération de Château-Thierry pour transport médical, gares, aéroports CDG, Orly, Beauvais, courses privées et professionnelles."
+    "Yas'Taxii - Taxi conventionne Gandelu, Crezancy et Chateau-Thierry",
+    "Taxi conventionne de Gandelu, Crezancy et toute l'agglomeration de Chateau-Thierry pour transport medical, gares, aeroports CDG, Orly, Beauvais, courses privees et professionnelles."
   ),
   icons: {
     icon: [{ url: "/logo/yastaxii-favicon.jpg", sizes: "32x32", type: "image/jpeg" }],

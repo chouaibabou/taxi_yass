@@ -3,7 +3,10 @@
 import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { getLocalizedFleet, getLocalizedServices } from "@/data/localized";
+import { getPageTranslations } from "@/data/page-translations";
 import { siteConfig, whatsappUrl } from "@/data/site";
+import { getTranslations } from "@/data/translations";
+import { localizedPath } from "@/lib/i18n";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { useLocale } from "@/lib/locale-context";
@@ -12,6 +15,8 @@ export default function ServicesPage() {
   const locale = useLocale();
   const services = getLocalizedServices(locale);
   const fleet = getLocalizedFleet(locale);
+  const pt = getPageTranslations(locale).servicesPage;
+  const t = getTranslations(locale);
 
   return (
     <>
@@ -19,13 +24,11 @@ export default function ServicesPage() {
         <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:42px_42px]" />
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div className="grid content-center">
-            <p className="inline-flex w-fit rounded-md bg-taxi-gold px-3 py-2 text-sm font-black uppercase tracking-wide text-taxi-black">Services Yas&apos;Taxii</p>
-            <h1 className="mt-3 text-4xl font-black leading-tight sm:text-5xl">Taxi conventionné, navettes et toutes distances</h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">
-              Des solutions de transport claires pour l&apos;agglomération de Château-Thierry, les gares, les aéroports, les trajets médicaux et les déplacements professionnels.
-            </p>
+            <p className="inline-flex w-fit rounded-md bg-taxi-gold px-3 py-2 text-sm font-black uppercase tracking-wide text-taxi-black">{pt.badge}</p>
+            <h1 className="mt-3 text-4xl font-black leading-tight sm:text-5xl">{pt.title}</h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">{pt.intro}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/#reserver">Réserver / demander un devis</ButtonLink>
+              <ButtonLink href={localizedPath("/#reserver", locale)}>{pt.cta}</ButtonLink>
               <ButtonLink href={whatsappUrl()} variant="whatsapp" target="_blank">
                 WhatsApp
               </ButtonLink>
@@ -47,15 +50,13 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-3xl">
-              <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Nos différents services</p>
-              <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Des prestations claires pour chaque besoin de transport</h2>
-              <p className="mt-4 leading-7 text-neutral-600">
-                Quelle que soit votre destination, Yas&apos;Taxii organise votre trajet avec ponctualité, confort et sérieux, dans l&apos;agglomération de Château-Thierry, le département de l&apos;Aisne et les secteurs voisins.
-              </p>
+              <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">{pt.servicesEyebrow}</p>
+              <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">{pt.servicesTitle}</h2>
+              <p className="mt-4 leading-7 text-neutral-600">{pt.servicesText}</p>
             </div>
             <div className="rounded-lg bg-taxi-black p-4 text-white">
               <div className="text-3xl font-black text-taxi-gold">24/7</div>
-              <div className="text-sm font-bold text-white/75">Réservation et devis rapide</div>
+              <div className="text-sm font-bold text-white/75">{pt.fastQuote}</div>
             </div>
           </div>
 
@@ -73,7 +74,7 @@ export default function ServicesPage() {
                   <h3 className="text-xl font-black text-taxi-black">{title}</h3>
                   <p className="text-sm leading-6 text-neutral-600">{description}</p>
                   <span className="inline-flex items-center gap-2 text-sm font-black text-taxi-black">
-                    Détails <ArrowRight className="transition group-hover:translate-x-1" size={16} />
+                    {pt.details} <ArrowRight className="transition group-hover:translate-x-1" size={16} />
                   </span>
                 </div>
               </a>
@@ -85,8 +86,8 @@ export default function ServicesPage() {
       <section className="bg-taxi-cream py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
-            <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Services détaillés</p>
-            <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Chaque service en détail</h2>
+            <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">{pt.detailedEyebrow}</p>
+            <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">{pt.detailedTitle}</h2>
           </div>
           <div className="grid gap-8">
             {services.map(({ id, slug, title, details, image, keywords }, index) => (
@@ -95,7 +96,7 @@ export default function ServicesPage() {
                   <div className="relative min-h-80">
                     <Image src={image} alt={title} fill className="object-cover" sizes="(min-width: 1024px) 45vw, 100vw" />
                     <div className="absolute left-5 top-5 rounded-md bg-taxi-black px-3 py-2 text-xs font-black uppercase tracking-wide text-taxi-gold">
-                      Service {String(index + 1).padStart(2, "0")}
+                      {pt.serviceLabel} {String(index + 1).padStart(2, "0")}
                     </div>
                   </div>
                   <div className="grid content-center gap-5 p-6 sm:p-10">
@@ -110,9 +111,9 @@ export default function ServicesPage() {
                       ))}
                     </div>
                     <div className="flex flex-col gap-3 sm:flex-row">
-                      <ButtonLink href="/#reserver">Demander un devis</ButtonLink>
+                      <ButtonLink href={localizedPath("/#reserver", locale)}>{pt.quote}</ButtonLink>
                       <ButtonLink href={siteConfig.phoneHref} variant="dark">
-                        Appeler
+                        {t.common.call}
                       </ButtonLink>
                     </div>
                   </div>
@@ -127,12 +128,12 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-3xl">
-              <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Véhicules disponibles</p>
-              <h2 className="mt-2 text-3xl font-black sm:text-4xl">Taxi et Taxi Van pour adapter le trajet au nombre de passagers</h2>
-              <p className="mt-4 text-white/70">Une flotte simple à comprendre, orientée confort et trajets toutes distances.</p>
+              <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">{pt.vehiclesEyebrow}</p>
+              <h2 className="mt-2 text-3xl font-black sm:text-4xl">{pt.vehiclesTitle}</h2>
+              <p className="mt-4 text-white/70">{pt.vehiclesText}</p>
             </div>
-            <ButtonLink href="/#reserver" variant="secondary">
-              Réserver maintenant
+            <ButtonLink href={localizedPath("/#reserver", locale)} variant="secondary">
+              {t.hero.book}
             </ButtonLink>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -141,7 +142,7 @@ export default function ServicesPage() {
                 <div className="relative h-80 overflow-hidden bg-neutral-100 sm:h-96">
                   <Image
                     src={image}
-                    alt={`Véhicule ${name} Yas'Taxii`}
+                    alt={`${pt.vehicleAlt} ${name} Yas'Taxii`}
                     fill
                     className="object-cover object-center transition duration-500 hover:scale-105"
                     sizes="(min-width: 768px) 50vw, 100vw"

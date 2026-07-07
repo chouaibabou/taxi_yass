@@ -3,11 +3,16 @@
 import { ChevronLeft, ChevronRight, ExternalLink, Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Review, reviews } from "@/data/reviews";
+import { getPageTranslations } from "@/data/page-translations";
 import { siteConfig } from "@/data/site";
+import { localizedPath } from "@/lib/i18n";
+import { useLocale } from "@/lib/locale-context";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 
 export function ReviewsSection() {
+  const locale = useLocale();
+  const page = getPageTranslations(locale).reviews;
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [googleRating, setGoogleRating] = useState(siteConfig.googleRating);
   const [googleReviewCount, setGoogleReviewCount] = useState(siteConfig.googleReviewCount);
@@ -60,16 +65,18 @@ export function ReviewsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-3xl">
-            <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">Avis clients</p>
-            <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">Une relation de confiance, trajet apres trajet</h2>
-            <p className="mt-4 text-neutral-600">Note Google {googleRating.toFixed(1)}/5 basee sur {googleReviewCount} avis clients.</p>
+            <p className="text-sm font-black uppercase tracking-wide text-taxi-gold">{page.sectionEyebrow}</p>
+            <h2 className="mt-2 text-3xl font-black text-taxi-black sm:text-4xl">{page.sectionTitle}</h2>
+            <p className="mt-4 text-neutral-600">
+              {page.score} {googleRating.toFixed(1)}/5 {page.basedOn} {googleReviewCount} {page.reviews}.
+            </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/avis" variant="dark">
-              Voir tous les avis
+            <ButtonLink href={localizedPath("/avis", locale)} variant="dark">
+              {page.all}
             </ButtonLink>
             <ButtonLink href={siteConfig.googleReviewWriteUrl} target="_blank">
-              Laisser un avis Google <ExternalLink size={16} />
+              {page.write} <ExternalLink size={16} />
             </ButtonLink>
           </div>
         </div>
@@ -79,7 +86,7 @@ export function ReviewsSection() {
             type="button"
             onClick={() => scrollReviews("previous")}
             className="absolute -left-3 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-neutral-200 bg-white text-taxi-black shadow-lg transition hover:bg-taxi-gold"
-            aria-label="Avis precedent"
+            aria-label={page.previous}
           >
             <ChevronLeft size={22} />
           </button>
@@ -92,14 +99,14 @@ export function ReviewsSection() {
             type="button"
             onClick={() => scrollReviews("next")}
             className="absolute -right-3 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-neutral-200 bg-white text-taxi-black shadow-lg transition hover:bg-taxi-gold"
-            aria-label="Avis suivant"
+            aria-label={page.next}
           >
             <ChevronRight size={22} />
           </button>
         </div>
 
         <div className="mt-5 text-center text-sm text-neutral-700">
-          <strong>Google rating score: {googleRating.toFixed(1)}</strong> of 5, based on <strong>{googleReviewCount} reviews</strong>
+          <strong>{page.score}: {googleRating.toFixed(1)}</strong>/5, {page.basedOn} <strong>{googleReviewCount} {page.reviews}</strong>
         </div>
       </div>
     </section>
