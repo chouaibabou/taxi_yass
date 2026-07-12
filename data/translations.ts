@@ -109,6 +109,7 @@ export const translations = {
         eventDate: "Date de l'evenement",
         pickupTime: "Heure de prise en charge souhaitee",
         returnTime: "Heure de retour",
+        businessTripType: "Type de voyage",
         company: "Nom de la societe",
         contactName: "Nom du contact",
         businessEmail: "Email professionnel",
@@ -123,18 +124,21 @@ export const translations = {
         consultation: "Consultation",
         other: "Autre",
         oneTime: "Ponctuel",
-        recurring: "Recurrent"
+        recurring: "Recurrent",
+        professionalTrip: "Professionnel",
+        personalTrip: "Particulier"
       },
       errors: {
         required: "Champ obligatoire",
         precise: "Merci de preciser",
-        taxiPassengers: "Le Taxi accepte entre 1 et 4 passagers.",
+        taxiPassengers: "Le Taxi accepte entre 1 et 6 passagers.",
         vanPassengers: "Le Taxi Van accepte entre 1 et 8 passagers."
       },
       confirmTitle: "Recapitulatif avant envoi",
       confirmationLabels: {
         vehicle: "Vehicule choisi",
         service: "Prestation choisie",
+        businessTripType: "Type de voyage",
         fullName: "Nom et prenom",
         company: "Societe",
         contactName: "Contact",
@@ -206,11 +210,11 @@ export const translations = {
       newRequest: "Send a new request",
       showComfort: "View equipment",
       comfortItems: ["360 baby seat convertible into cosy", "Booster seat", "Baby cosy", "Travel pillow", "Compression cooler (-20 deg C)", "220V socket", "Tow bar", "Bike rack up to 3 bikes"],
-      fields: { fullName: "Full name", email: "Email", phone: "Phone", pickupAddress: "Pickup address", destinationAddress: "Arrival address", appointmentReason: "Appointment reason", appointmentReasonOther: "Specify the reason", appointmentDate: "Appointment date", appointmentTime: "Appointment time", passengers: "Number of passengers", luggage: "Number of bags", babySeat: "Need a baby seat", flightOrTrainNumber: "Optional flight or train number", departureDateTime: "Departure date and time", eventAddress: "Event address", eventDate: "Event date", pickupTime: "Desired pickup time", returnTime: "Return time", company: "Company name", contactName: "Contact name", businessEmail: "Business email", invoiceNeeded: "Need an invoice", tripFrequency: "Trip", comment: "Optional comment" },
-      options: { yes: "Yes", no: "No", dayHospital: "Day hospital", consultation: "Consultation", other: "Other", oneTime: "One-time", recurring: "Recurring" },
-      errors: { required: "Required field", precise: "Please specify", taxiPassengers: "Taxi accepts 1 to 4 passengers.", vanPassengers: "Taxi Van accepts 1 to 8 passengers." },
+      fields: { fullName: "Full name", email: "Email", phone: "Phone", pickupAddress: "Pickup address", destinationAddress: "Arrival address", appointmentReason: "Appointment reason", appointmentReasonOther: "Specify the reason", appointmentDate: "Appointment date", appointmentTime: "Appointment time", passengers: "Number of passengers", luggage: "Number of bags", babySeat: "Need a baby seat", flightOrTrainNumber: "Optional flight or train number", departureDateTime: "Departure date and time", eventAddress: "Event address", eventDate: "Event date", pickupTime: "Desired pickup time", returnTime: "Return time", businessTripType: "Travel type", company: "Company name", contactName: "Contact name", businessEmail: "Business email", invoiceNeeded: "Need an invoice", tripFrequency: "Trip", comment: "Optional comment" },
+      options: { yes: "Yes", no: "No", dayHospital: "Day hospital", consultation: "Consultation", other: "Other", oneTime: "One-time", recurring: "Recurring", professionalTrip: "Business", personalTrip: "Private" },
+      errors: { required: "Required field", precise: "Please specify", taxiPassengers: "Taxi accepts 1 to 6 passengers.", vanPassengers: "Taxi Van accepts 1 to 8 passengers." },
       confirmTitle: "Summary before sending",
-      confirmationLabels: { vehicle: "Selected vehicle", service: "Selected service", fullName: "Full name", company: "Company", contactName: "Contact", email: "Email", businessEmail: "Business email", phone: "Phone", pickupAddress: "Pickup", destinationAddress: "Arrival", eventAddress: "Event / appointment", appointmentReason: "Reason", appointmentReasonOther: "Reason details", appointmentDate: "Appointment date", appointmentTime: "Appointment time", departureDateTime: "Departure", eventDate: "Date", pickupTime: "Pickup time", returnTime: "Return time", passengers: "Passengers", luggage: "Bags", babySeat: "Baby seat", flightOrTrainNumber: "Flight / train", invoiceNeeded: "Invoice", tripFrequency: "Trip", comment: "Comment" }
+      confirmationLabels: { vehicle: "Selected vehicle", service: "Selected service", businessTripType: "Travel type", fullName: "Full name", company: "Company", contactName: "Contact", email: "Email", businessEmail: "Business email", phone: "Phone", pickupAddress: "Pickup", destinationAddress: "Arrival", eventAddress: "Event / appointment", appointmentReason: "Reason", appointmentReasonOther: "Reason details", appointmentDate: "Appointment date", appointmentTime: "Appointment time", departureDateTime: "Departure", eventDate: "Date", pickupTime: "Pickup time", returnTime: "Return time", passengers: "Passengers", luggage: "Bags", babySeat: "Baby seat", flightOrTrainNumber: "Flight / train", invoiceNeeded: "Invoice", tripFrequency: "Trip", comment: "Comment" }
     },
     contact: { eyebrow: "Contact", title: "Need a taxi or a quick quote?", success: "Your message has been sent.", message: "Message" },
     faq: { eyebrow: "FAQ", title: "Frequently asked questions" }
@@ -249,11 +253,11 @@ export const translations = {
       newRequest: "Enviar una nueva solicitud",
       showComfort: "Ver equipamiento",
       comfortItems: ["Silla bebe 360 convertible", "Elevador", "Cosy bebe", "Almohada de viaje", "Nevera de compresion (-20 deg C)", "Toma 220V", "Enganche", "Portabicicletas hasta 3 bicicletas"],
-      fields: { fullName: "Nombre y apellido", email: "Email", phone: "Telefono", pickupAddress: "Direccion de recogida", destinationAddress: "Direccion de llegada", appointmentReason: "Motivo de la cita", appointmentReasonOther: "Precise el motivo", appointmentDate: "Fecha de la cita", appointmentTime: "Hora de la cita", passengers: "Numero de pasajeros", luggage: "Numero de maletas", babySeat: "Necesita silla bebe", flightOrTrainNumber: "Numero de vuelo o tren opcional", departureDateTime: "Fecha y hora de salida", eventAddress: "Direccion del evento", eventDate: "Fecha del evento", pickupTime: "Hora de recogida deseada", returnTime: "Hora de regreso", company: "Empresa", contactName: "Persona de contacto", businessEmail: "Email profesional", invoiceNeeded: "Necesita factura", tripFrequency: "Trayecto", comment: "Comentario opcional" },
-      options: { yes: "Si", no: "No", dayHospital: "Hospital de dia", consultation: "Consulta", other: "Otro", oneTime: "Puntual", recurring: "Recurrente" },
-      errors: { required: "Campo obligatorio", precise: "Por favor precise", taxiPassengers: "El Taxi acepta de 1 a 4 pasajeros.", vanPassengers: "El Taxi Van acepta de 1 a 8 pasajeros." },
+      fields: { fullName: "Nombre y apellido", email: "Email", phone: "Telefono", pickupAddress: "Direccion de recogida", destinationAddress: "Direccion de llegada", appointmentReason: "Motivo de la cita", appointmentReasonOther: "Precise el motivo", appointmentDate: "Fecha de la cita", appointmentTime: "Hora de la cita", passengers: "Numero de pasajeros", luggage: "Numero de maletas", babySeat: "Necesita silla bebe", flightOrTrainNumber: "Numero de vuelo o tren opcional", departureDateTime: "Fecha y hora de salida", eventAddress: "Direccion del evento", eventDate: "Fecha del evento", pickupTime: "Hora de recogida deseada", returnTime: "Hora de regreso", businessTripType: "Tipo de viaje", company: "Empresa", contactName: "Persona de contacto", businessEmail: "Email profesional", invoiceNeeded: "Necesita factura", tripFrequency: "Trayecto", comment: "Comentario opcional" },
+      options: { yes: "Si", no: "No", dayHospital: "Hospital de dia", consultation: "Consulta", other: "Otro", oneTime: "Puntual", recurring: "Recurrente", professionalTrip: "Profesional", personalTrip: "Particular" },
+      errors: { required: "Campo obligatorio", precise: "Por favor precise", taxiPassengers: "El Taxi acepta de 1 a 6 pasajeros.", vanPassengers: "El Taxi Van acepta de 1 a 8 pasajeros." },
       confirmTitle: "Resumen antes de enviar",
-      confirmationLabels: { vehicle: "Vehiculo elegido", service: "Servicio elegido", fullName: "Nombre y apellido", company: "Empresa", contactName: "Contacto", email: "Email", businessEmail: "Email profesional", phone: "Telefono", pickupAddress: "Recogida", destinationAddress: "Llegada", eventAddress: "Evento / cita", appointmentReason: "Motivo", appointmentReasonOther: "Detalle del motivo", appointmentDate: "Fecha de cita", appointmentTime: "Hora de cita", departureDateTime: "Salida", eventDate: "Fecha", pickupTime: "Hora de recogida", returnTime: "Hora de regreso", passengers: "Pasajeros", luggage: "Maletas", babySeat: "Silla bebe", flightOrTrainNumber: "Vuelo / tren", invoiceNeeded: "Factura", tripFrequency: "Trayecto", comment: "Comentario" }
+      confirmationLabels: { vehicle: "Vehiculo elegido", service: "Servicio elegido", businessTripType: "Tipo de viaje", fullName: "Nombre y apellido", company: "Empresa", contactName: "Contacto", email: "Email", businessEmail: "Email profesional", phone: "Telefono", pickupAddress: "Recogida", destinationAddress: "Llegada", eventAddress: "Evento / cita", appointmentReason: "Motivo", appointmentReasonOther: "Detalle del motivo", appointmentDate: "Fecha de cita", appointmentTime: "Hora de cita", departureDateTime: "Salida", eventDate: "Fecha", pickupTime: "Hora de recogida", returnTime: "Hora de regreso", passengers: "Pasajeros", luggage: "Maletas", babySeat: "Silla bebe", flightOrTrainNumber: "Vuelo / tren", invoiceNeeded: "Factura", tripFrequency: "Trayecto", comment: "Comentario" }
     },
     contact: { eyebrow: "Contacto", title: "Necesita un taxi o un presupuesto rapido?", success: "Su mensaje ha sido enviado.", message: "Mensaje" },
     faq: { eyebrow: "FAQ", title: "Preguntas frecuentes" }
@@ -292,11 +296,11 @@ export const translations = {
       newRequest: "Neue Anfrage senden",
       showComfort: "Ausstattung anzeigen",
       comfortItems: ["360-Babysitz", "Sitzerhohung", "Baby-Cosy", "Reisekissen", "Kompressionskuhlbox (-20 deg C)", "220V Steckdose", "Anhangerkupplung", "Fahrradtrager bis 3 Fahrrader"],
-      fields: { fullName: "Vor- und Nachname", email: "E-Mail", phone: "Telefon", pickupAddress: "Abholadresse", destinationAddress: "Zieladresse", appointmentReason: "Grund des Termins", appointmentReasonOther: "Grund angeben", appointmentDate: "Termindatum", appointmentTime: "Terminzeit", passengers: "Anzahl Fahrgaste", luggage: "Anzahl Gepackstucke", babySeat: "Babysitz benotigt", flightOrTrainNumber: "Flug- oder Zugnummer optional", departureDateTime: "Abfahrtsdatum und Uhrzeit", eventAddress: "Eventadresse", eventDate: "Eventdatum", pickupTime: "Gewunschte Abholzeit", returnTime: "Ruckfahrtzeit", company: "Firmenname", contactName: "Kontaktname", businessEmail: "Geschaftliche E-Mail", invoiceNeeded: "Rechnung benotigt", tripFrequency: "Fahrt", comment: "Optionaler Kommentar" },
-      options: { yes: "Ja", no: "Nein", dayHospital: "Tagesklinik", consultation: "Sprechstunde", other: "Andere", oneTime: "Einmalig", recurring: "Wiederkehrend" },
-      errors: { required: "Pflichtfeld", precise: "Bitte angeben", taxiPassengers: "Das Taxi akzeptiert 1 bis 4 Fahrgaste.", vanPassengers: "Der Taxi Van akzeptiert 1 bis 8 Fahrgaste." },
+      fields: { fullName: "Vor- und Nachname", email: "E-Mail", phone: "Telefon", pickupAddress: "Abholadresse", destinationAddress: "Zieladresse", appointmentReason: "Grund des Termins", appointmentReasonOther: "Grund angeben", appointmentDate: "Termindatum", appointmentTime: "Terminzeit", passengers: "Anzahl Fahrgaste", luggage: "Anzahl Gepackstucke", babySeat: "Babysitz benotigt", flightOrTrainNumber: "Flug- oder Zugnummer optional", departureDateTime: "Abfahrtsdatum und Uhrzeit", eventAddress: "Eventadresse", eventDate: "Eventdatum", pickupTime: "Gewunschte Abholzeit", returnTime: "Ruckfahrtzeit", businessTripType: "Reiseart", company: "Firmenname", contactName: "Kontaktname", businessEmail: "Geschaftliche E-Mail", invoiceNeeded: "Rechnung benotigt", tripFrequency: "Fahrt", comment: "Optionaler Kommentar" },
+      options: { yes: "Ja", no: "Nein", dayHospital: "Tagesklinik", consultation: "Sprechstunde", other: "Andere", oneTime: "Einmalig", recurring: "Wiederkehrend", professionalTrip: "Geschaftlich", personalTrip: "Privat" },
+      errors: { required: "Pflichtfeld", precise: "Bitte angeben", taxiPassengers: "Das Taxi akzeptiert 1 bis 6 Fahrgaste.", vanPassengers: "Der Taxi Van akzeptiert 1 bis 8 Fahrgaste." },
       confirmTitle: "Zusammenfassung vor dem Senden",
-      confirmationLabels: { vehicle: "Gewahltes Fahrzeug", service: "Gewahlte Leistung", fullName: "Vor- und Nachname", company: "Firma", contactName: "Kontakt", email: "E-Mail", businessEmail: "Geschaftliche E-Mail", phone: "Telefon", pickupAddress: "Abholung", destinationAddress: "Ankunft", eventAddress: "Event / Termin", appointmentReason: "Grund", appointmentReasonOther: "Details", appointmentDate: "Termindatum", appointmentTime: "Terminzeit", departureDateTime: "Abfahrt", eventDate: "Datum", pickupTime: "Abholzeit", returnTime: "Ruckfahrt", passengers: "Fahrgaste", luggage: "Gepack", babySeat: "Babysitz", flightOrTrainNumber: "Flug / Zug", invoiceNeeded: "Rechnung", tripFrequency: "Fahrt", comment: "Kommentar" }
+      confirmationLabels: { vehicle: "Gewahltes Fahrzeug", service: "Gewahlte Leistung", businessTripType: "Reiseart", fullName: "Vor- und Nachname", company: "Firma", contactName: "Kontakt", email: "E-Mail", businessEmail: "Geschaftliche E-Mail", phone: "Telefon", pickupAddress: "Abholung", destinationAddress: "Ankunft", eventAddress: "Event / Termin", appointmentReason: "Grund", appointmentReasonOther: "Details", appointmentDate: "Termindatum", appointmentTime: "Terminzeit", departureDateTime: "Abfahrt", eventDate: "Datum", pickupTime: "Abholzeit", returnTime: "Ruckfahrt", passengers: "Fahrgaste", luggage: "Gepack", babySeat: "Babysitz", flightOrTrainNumber: "Flug / Zug", invoiceNeeded: "Rechnung", tripFrequency: "Fahrt", comment: "Kommentar" }
     },
     contact: { eyebrow: "Kontakt", title: "Brauchen Sie ein Taxi oder ein schnelles Angebot?", success: "Ihre Nachricht wurde gesendet.", message: "Nachricht" },
     faq: { eyebrow: "FAQ", title: "Haufige Fragen" }

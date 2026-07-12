@@ -16,13 +16,13 @@ const destinationRequestSchema = z.object({
   comment: z.string().optional()
 }).superRefine((data, ctx) => {
   const count = Number(data.passengers || "1");
-  const max = data.vehicle === "van" ? 8 : 4;
+  const max = data.vehicle === "van" ? 8 : 6;
 
   if (!Number.isInteger(count) || count < 1 || count > max) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       path: ["passengers"],
-      message: data.vehicle === "van" ? "Le Taxi Van accepte entre 1 et 8 passagers." : "Le Taxi accepte entre 1 et 4 passagers."
+      message: data.vehicle === "van" ? "Le Taxi Van accepte entre 1 et 8 passagers." : "Le Taxi accepte entre 1 et 6 passagers."
     });
   }
 });

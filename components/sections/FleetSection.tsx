@@ -30,12 +30,12 @@ export function FleetSection() {
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {fleet.map(({ id, name, passengers, description, image, Icon }) => (
             <Card key={id} className="overflow-hidden border-white/10 bg-white/[0.06] text-white shadow-2xl">
-              <div className="relative h-80 overflow-hidden bg-neutral-100 sm:h-96">
+              <div className="relative h-64 overflow-hidden bg-neutral-100 sm:h-96">
                 <Image
                   src={image}
                   alt={`Yas'Taxii ${name}`}
                   fill
-                  className="object-cover object-center transition duration-500 hover:scale-105"
+                  className="object-cover object-center transition duration-500 hover:scale-105 filter saturate-75"
                   sizes="(min-width: 768px) 50vw, 100vw"
                 />
               </div>

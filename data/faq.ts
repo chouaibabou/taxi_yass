@@ -32,7 +32,7 @@ export const faq = [
   {
     question: "Puis-je réserver pour plusieurs personnes ?",
     answer:
-      "Oui. Choisissez Taxi jusqu'à 4 passagers ou Taxi Van jusqu'à 8 passagers selon le nombre de personnes."
+      "Oui. Choisissez Taxi jusqu'à 6 passagers ou Taxi Van jusqu'à 8 passagers selon le nombre de personnes."
   },
   {
     question: "Comment modifier ou annuler une demande ?",

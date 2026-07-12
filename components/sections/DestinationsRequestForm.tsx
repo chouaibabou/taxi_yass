@@ -31,10 +31,10 @@ export function DestinationsRequestForm() {
   });
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
-  const passengerMax = formState.vehicle === "eco" ? 4 : 8;
+  const passengerMax = formState.vehicle === "eco" ? 6 : 8;
 
   function updateVehicle(vehicle: "eco" | "van") {
-    const max = vehicle === "eco" ? 4 : 8;
+    const max = vehicle === "eco" ? 6 : 8;
     setFormState((current) => {
       const count = Number(current.passengers || "1");
       return {
@@ -151,7 +151,7 @@ export function DestinationsRequestForm() {
                 <Input name="email" type="email" label={page.email} required />
                 <Input name="phone" label={page.phone} required />
                 <label className="grid gap-2 text-sm font-semibold text-taxi-black">
-                  <FieldLabel label={`${page.passengerCount} (${formState.vehicle === "eco" ? "1-4" : "1-8"})`} required />
+                  <FieldLabel label={`${page.passengerCount} (${formState.vehicle === "eco" ? "1-6" : "1-8"})`} required />
                   <select
                     name="passengers"
                     value={formState.passengers}

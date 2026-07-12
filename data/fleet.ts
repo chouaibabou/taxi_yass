@@ -4,7 +4,7 @@ export const fleet = [
   {
     id: "eco",
     name: "Taxi",
-    passengers: "1 à 4 passagers",
+    passengers: "1 à 6 passagers",
     description: "Taxi confortable pour trajets quotidiens, gares, aéroports et transport médical conventionné.",
     image: "/images/fleet-taxi.jpeg",
     Icon: Users
