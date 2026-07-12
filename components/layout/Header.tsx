@@ -115,7 +115,7 @@ export function Header() {
             ))}
           </nav>
           <div className="mt-4">
-            <LanguageSwitcher pathname={pathname} />
+            <LanguageSwitcher pathname={pathname} onSelect={() => setOpen(false)} />
           </div>
           <div className="mt-4 grid grid-cols-2 gap-2">
             <ButtonLink href={siteConfig.phoneHref} variant="secondary" onClick={() => trackConversion("phone_click")}>
@@ -131,7 +131,7 @@ export function Header() {
   );
 }
 
-function LanguageSwitcher({ pathname }: { pathname: string }) {
+function LanguageSwitcher({ pathname, onSelect }: { pathname: string; onSelect?: () => void }) {
   const currentLocale = useLocale();
   const basePath = stripLocale(pathname);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -146,17 +146,20 @@ function LanguageSwitcher({ pathname }: { pathname: string }) {
         onClick={() => setLanguageOpen((current) => !current)}
       >
         <FlagIcon locale={currentLocale} />
-        <ChevronDown className={`text-taxi-gold transition ${languageOpen ? "rotate-180" : ""} group-hover:rotate-180`} size={15} />
+        <ChevronDown className={`text-taxi-gold transition ${languageOpen ? "rotate-180" : ""}`} size={15} />
       </button>
 
       <div
-        className={`${languageOpen ? "visible translate-y-0 opacity-100" : "invisible translate-y-2 opacity-0"} absolute right-0 top-full z-50 min-w-60 rounded-md border border-neutral-200 bg-white p-2 text-taxi-black shadow-2xl transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100`}
+        className={`${languageOpen ? "visible translate-y-0 opacity-100" : "invisible translate-y-2 opacity-0"} absolute right-0 top-full z-50 min-w-60 rounded-md border border-neutral-200 bg-white p-2 text-taxi-black shadow-2xl transition`}
       >
         {locales.map((locale) => (
           <Link
             key={locale}
             href={localizedPath(basePath, locale)}
-            onClick={() => setLanguageOpen(false)}
+            onClick={() => {
+              setLanguageOpen(false);
+              onSelect?.();
+            }}
             className="flex items-center justify-between gap-4 rounded-md px-3 py-3 text-sm font-bold transition hover:bg-neutral-50 data-[active=true]:bg-taxi-gold/15 data-[active=true]:shadow-sm"
             data-active={locale === currentLocale}
           >
@@ -188,6 +191,10 @@ function FlagIcon({ locale }: { locale: Locale }) {
   if (locale === "en") {
     return (
       <span className="relative h-4 w-6 overflow-hidden rounded-[2px] bg-[#12327a] ring-1 ring-black/10" aria-hidden="true">
+        <span className="absolute left-1/2 top-1/2 h-8 w-1 -translate-x-1/2 -translate-y-1/2 rotate-[56deg] bg-white" />
+        <span className="absolute left-1/2 top-1/2 h-8 w-1 -translate-x-1/2 -translate-y-1/2 -rotate-[56deg] bg-white" />
+        <span className="absolute left-1/2 top-1/2 h-8 w-0.5 -translate-x-1/2 -translate-y-1/2 rotate-[56deg] bg-[#d71920]" />
+        <span className="absolute left-1/2 top-1/2 h-8 w-0.5 -translate-x-1/2 -translate-y-1/2 -rotate-[56deg] bg-[#d71920]" />
         <span className="absolute left-0 top-1/2 h-1 w-full -translate-y-1/2 bg-white" />
         <span className="absolute left-1/2 top-0 h-full w-1 -translate-x-1/2 bg-white" />
         <span className="absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 bg-[#d71920]" />

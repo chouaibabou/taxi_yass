@@ -20,9 +20,19 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
   const t = getTranslations(locale);
   const pt = getPageTranslations(locale);
   const service = draft.service || "medical";
+  const [businessTripType, setBusinessTripType] = useState(String(draft.businessTripType || t.booking.options.professionalTrip));
   const submitLabel = service === "airport" || service === "business" ? t.common.quote : `${t.common.book} / ${t.common.quote}`;
-  const passengerMax = draft.vehicle === "van" ? 8 : 4;
+  const passengerMax = draft.vehicle === "van" ? 8 : 6;
   const fields = useMemo(() => getFields(service, t), [service, t]);
+  const isBusinessPersonalTrip = service === "business" && businessTripType === t.booking.options.personalTrip;
+
+  function isFieldRequired(field: Field) {
+    if (service === "business" && field.name === "company") {
+      return !isBusinessPersonalTrip;
+    }
+
+    return Boolean(field.required);
+  }
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -32,7 +42,7 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
     const nextErrors: Record<string, string> = {};
 
     fields.forEach((field) => {
-      if (field.required && !String(formValues[field.name] || "").trim()) {
+      if (isFieldRequired(field) && !String(formValues[field.name] || "").trim()) {
         nextErrors[field.name] = t.booking.errors.required;
       }
     });
@@ -61,25 +71,34 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
         <span className="text-red-600">*</span> {pt.requiredFields}
       </p>
       <div className="grid gap-4 md:grid-cols-2">
-        {fields.map((field) =>
-          field.kind === "address" ? (
+        {fields.map((field) => {
+          const required = isFieldRequired(field);
+
+          return field.kind === "address" ? (
             <AddressAutocomplete
               key={field.name}
               id={field.name}
               name={field.name}
               label={field.label}
-              required={field.required}
+              required={required}
               defaultValue={String(draft[field.name as keyof BookingDraft] || "")}
               error={errors[field.name]}
             />
           ) : field.kind === "select" ? (
             <label key={field.name} className="grid gap-2 text-sm font-semibold">
-              <FieldLabel label={field.label} required={field.required} />
+              <FieldLabel label={field.label} required={required} />
               <select
                 name={field.name}
-                required={field.required}
-                defaultValue={String(draft[field.name as keyof BookingDraft] || "")}
-                onChange={field.name === "appointmentReason" ? (event) => setAppointmentReason(event.target.value) : undefined}
+                required={required}
+                defaultValue={String(draft[field.name as keyof BookingDraft] || (field.name === "businessTripType" ? t.booking.options.professionalTrip : ""))}
+                onChange={(event) => {
+                  if (field.name === "appointmentReason") {
+                    setAppointmentReason(event.target.value);
+                  }
+                  if (field.name === "businessTripType") {
+                    setBusinessTripType(event.target.value);
+                  }
+                }}
                 className="h-12 rounded-md border border-neutral-200 bg-white px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20"
               >
                 <option value="">{t.common.choose}</option>
@@ -93,10 +112,10 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
             </label>
           ) : field.name === "passengers" ? (
             <label key={field.name} className="grid gap-2 text-sm font-semibold">
-              <FieldLabel label={`${field.label} (${draft.vehicle === "van" ? "1-8" : "1-4"})`} required={field.required} />
+              <FieldLabel label={`${field.label} (${draft.vehicle === "van" ? "1-8" : "1-6"})`} required={required} />
               <select
                 name={field.name}
-                required={field.required}
+                required={required}
                 defaultValue={
                   Number(draft.passengers || "0") >= 1 && Number(draft.passengers || "0") <= passengerMax
                     ? String(draft.passengers)
@@ -115,18 +134,18 @@ export function StepForm({ draft, setDraft, onBack, onNext }: Props) {
             </label>
           ) : (
             <label key={field.name} className="grid gap-2 text-sm font-semibold">
-              <FieldLabel label={field.label} required={field.required} />
+              <FieldLabel label={field.label} required={required} />
               <input
                 name={field.name}
                 type={field.type || "text"}
-                required={field.required}
+                required={required}
                 defaultValue={String(draft[field.name as keyof BookingDraft] || "")}
                 className="h-12 rounded-md border border-neutral-200 px-4 outline-none focus:border-taxi-gold focus:ring-4 focus:ring-taxi-gold/20"
               />
               {errors[field.name] ? <span className="text-xs font-medium text-red-600">{errors[field.name]}</span> : null}
             </label>
-          )
-        )}
+          );
+        })}
         {service === "medical" && appointmentReason === t.booking.options.other ? (
           <label className="grid gap-2 text-sm font-semibold">
             <FieldLabel label={t.booking.fields.appointmentReasonOther} required />
@@ -216,7 +235,8 @@ function getFields(service: string, t: ReturnType<typeof getTranslations>): Fiel
   }
 
   return [
-    { name: "company", label: t.booking.fields.company, required: true },
+    { name: "businessTripType", label: t.booking.fields.businessTripType, required: true, kind: "select", options: [t.booking.options.professionalTrip, t.booking.options.personalTrip] },
+    { name: "company", label: t.booking.fields.company },
     { name: "contactName", label: t.booking.fields.contactName, required: true },
     { name: "businessEmail", label: t.booking.fields.businessEmail, type: "email", required: true },
     { name: "phone", label: t.booking.fields.phone, required: true },

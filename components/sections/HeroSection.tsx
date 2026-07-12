@@ -10,10 +10,10 @@ import { ButtonLink } from "@/components/ui/Button";
 
 const icons = [Clock, BadgeCheck, ShieldCheck, Clock, BadgeCheck, Plane, Banknote, MapPin];
 const heroSlides = [
+  "/images/hero-yastaxi-gares-aeroports.jpeg",
   "/images/hero-yastaxi-vignes-aeroport.jpeg",
   "/images/hero-yastaxi-destinations-europe.jpeg",
-  "/images/hero-yastaxi-evenement.jpeg",
-  "/images/hero-yastaxi-gares-aeroports.jpeg"
+  "/images/hero-yastaxi-evenement.jpeg"
 ];
 
 export function HeroSection() {

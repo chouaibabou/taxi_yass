@@ -78,7 +78,7 @@ Donnees dans `data/fleet.ts`.
 
 Seulement deux categories :
 
-- Eco : id technique pour le vehicule affiche comme "Taxi", 1 a 4 passagers.
+- Eco : id technique pour le vehicule affiche comme "Taxi", 1 a 6 passagers.
 - Van : id technique pour le vehicule affiche comme "Taxi Van", 1 a 8 passagers.
 
 Images actuelles : `public/images/fleet-taxi.jpeg` et `public/images/fleet-taxi-van.jpeg`.
@@ -120,7 +120,7 @@ Demande destinations / partenaires taxi :
 - Formulaire : `components/sections/DestinationsRequestForm.tsx`
 - API route : `app/api/destination-request/route.ts`
 - Objectif : retirer le bloc zones de la home et proposer une page dediee ou le client choisit une zone, Taxi/Taxi Van, le besoin et ses coordonnees. Certaines zones peuvent etre traitees via des taxis partenaires.
-- Nombre de passagers limite par vehicule dans les formulaires : Taxi de 1 a 4, Taxi Van de 1 a 8, avec validation cote API.
+- Nombre de passagers limite par vehicule dans les formulaires : Taxi de 1 a 6, Taxi Van de 1 a 8, avec validation cote API.
 
 ## SEO
 
@@ -276,13 +276,15 @@ Avis : le total affiche est maintenant 113 avis Google via `siteConfig.googleRev
 
 Destinations : retrait du bloc `ZonesSection` de la home. Creation de `/destinations` avec liste des zones, explication des partenariats taxis et formulaire dedie zone + vehicule Taxi/Taxi Van + besoin + coordonnees. Le menu "Destinations" pointe vers `/destinations`, le sitemap inclut cette route.
 
-Formulaires : limite passagers ajoutee selon le vehicule selectionne. Taxi accepte 1 a 4 passagers, Taxi Van accepte 1 a 8 passagers dans le formulaire destinations et dans le wizard reservation, avec validation API.
+Formulaires : limite passagers ajoutee selon le vehicule selectionne. Taxi accepte 1 a 6 passagers, Taxi Van accepte 1 a 8 passagers dans le formulaire destinations et dans le wizard reservation, avec validation API.
 
 UX mobile formulaires : les champs "Nombre de passagers" du wizard et du formulaire destinations sont des listes deroulantes limitees selon le vehicule, afin d'eviter qu'un mobile laisse saisir une valeur hors limite.
 
 UX formulaires : les formulaires reservation, destinations et contact affichent maintenant la mention "* Champs obligatoires" en haut et une etoile rouge sur chaque label requis.
 
-Corrections contenu Yas'Taxii : textes alignes sur le secteur reel Gandelu, Crezancy et agglomeration de Chateau-Thierry. Les libelles visibles utilisent maintenant "Taxi" au lieu de "Eco" pour le vehicule 1 a 4 passagers, tout en gardant l'id technique `eco`. Le transport medical est ecrit "conventionne" avec accent dans l'interface. La page destinations est limitee a Taxi Crezancy, Taxi Gandelu, Taxi Chateau-Thierry et Taxi Soissons, avec mention des chauffeurs/taxis partenaires. Le formulaire medical propose Hopital de jour, Consultation et Autre avec champ de precision. La reservation affiche les equipements de confort disponibles pour longs trajets.
+Corrections contenu Yas'Taxii : textes alignes sur le secteur reel Gandelu, Crezancy et agglomeration de Chateau-Thierry. Les libelles visibles utilisent maintenant "Taxi" au lieu de "Eco" pour le vehicule 1 a 6 passagers, tout en gardant l'id technique `eco`. Le transport medical est ecrit "conventionne" avec accent dans l'interface. La page destinations est limitee a Taxi Crezancy, Taxi Gandelu, Taxi Chateau-Thierry et Taxi Soissons, avec mention des chauffeurs/taxis partenaires. Le formulaire medical propose Hopital de jour, Consultation et Autre avec champ de precision. La reservation affiche les equipements de confort disponibles pour longs trajets.
+
+Flotte : la capacite du vehicule Taxi est maintenant 1 a 6 passagers. Les selecteurs passagers du wizard et du formulaire taxis partenaires proposent 1 a 6 pour Taxi, et la validation API accepte cette limite.
 
 Reservation : la prestation particulier/evenementiel du wizard est renommee "Course classique de taxi ou mise a disposition" avec un texte couvrant l'agglomeration de Chateau-Thierry, le Sud de l'Aisne, CDG, les gares SNCF de Paris, Reims et villes voisines.
 
@@ -330,3 +332,11 @@ Header desktop : le menu desktop est simplifie pour reduire la densite visuelle.
 Header UX : les menus deroulants desktop "Infos utiles" et langue sont maintenant ouvrables au clic, en plus du survol, pour eviter les problemes de navigation et permettre le changement de langue de maniere fiable.
 
 Multilingue : fin de traduction des pages visibles du site. Les pages Services, Avis, Taxis partenaires, Portes de la Champagne, Mentions legales et Politique de confidentialite utilisent maintenant des textes localises via `data/page-translations.ts` et des composants client dedies quand necessaire. Les liens internes des pages localisees restent dans la langue courante.
+
+Hero : l'ordre du carrousel d'accueil a ete ajuste pour afficher en premier `hero-yastaxi-gares-aeroports.jpeg`, qui etait auparavant la derniere image.
+
+Header : le drapeau de la langue anglaise dans le selecteur de langue utilise maintenant un rendu Union Jack complet avec diagonales, pour eviter la confusion avec un autre drapeau.
+
+Header UX : le selecteur de langue est maintenant controle uniquement au clic et se ferme apres selection d'une langue. Sur mobile, choisir une langue ferme aussi le menu ouvert.
+
+Reservation : dans la prestation Professionnel / entreprise, l'etape informations contient maintenant un selecteur "Type de voyage" avec Professionnel ou Particulier. Le champ societe est obligatoire uniquement pour un voyage professionnel ; il devient facultatif pour un voyage particulier, avec validation cote client et API.

@@ -207,15 +207,15 @@ const bookingTranslations: Record<Exclude<Locale, "fr">, Record<string, BookingS
 
 const fleetTranslations: Record<Exclude<Locale, "fr">, Record<string, FleetTranslation>> = {
   en: {
-    eco: { name: "Taxi", passengers: "1 to 4 passengers", description: "Comfortable taxi for daily rides, stations, airports and licensed medical transport." },
+    eco: { name: "Taxi", passengers: "1 to 6 passengers", description: "Comfortable taxi for daily rides, stations, airports and licensed medical transport." },
     van: { name: "Taxi Van", passengers: "1 to 8 passengers", description: "Ideal for families, groups, stations, airports, events and business travel." }
   },
   es: {
-    eco: { name: "Taxi", passengers: "1 a 4 pasajeros", description: "Taxi confortable para trayectos diarios, estaciones, aeropuertos y transporte medico autorizado." },
+    eco: { name: "Taxi", passengers: "1 a 6 pasajeros", description: "Taxi confortable para trayectos diarios, estaciones, aeropuertos y transporte medico autorizado." },
     van: { name: "Taxi Van", passengers: "1 a 8 pasajeros", description: "Ideal para familias, grupos, estaciones, aeropuertos, eventos y viajes profesionales." }
   },
   de: {
-    eco: { name: "Taxi", passengers: "1 bis 4 Fahrgaste", description: "Komfortables Taxi fur Alltagsfahrten, Bahnhofe, Flughafen und medizinischen Transport." },
+    eco: { name: "Taxi", passengers: "1 bis 6 Fahrgaste", description: "Komfortables Taxi fur Alltagsfahrten, Bahnhofe, Flughafen und medizinischen Transport." },
     van: { name: "Taxi Van", passengers: "1 bis 8 Fahrgaste", description: "Ideal fur Familien, Gruppen, Bahnhofe, Flughafen, Events und Geschaftsreisen." }
   }
 };
@@ -228,7 +228,7 @@ const faqTranslations: Record<Exclude<Locale, "fr">, typeof faq> = {
     { question: "Which payment methods are accepted?", answer: "Payment can be organized according to the trip. Card payment is available if needed, to be confirmed when booking." },
     { question: "Can I request a quote?", answer: "Yes. The form allows you to request a clear quote, especially for airports, long distances and business trips." },
     { question: "Do you offer business rides?", answer: "Yes, we support companies for one-time or recurring rides, with invoice if needed." },
-    { question: "Can I book for several people?", answer: "Yes. Choose Taxi up to 4 passengers or Taxi Van up to 8 passengers." },
+    { question: "Can I book for several people?", answer: "Yes. Choose Taxi up to 6 passengers or Taxi Van up to 8 passengers." },
     { question: "How can I change or cancel a request?", answer: "Contact us quickly by phone or WhatsApp with your request details to change or cancel your trip." }
   ],
   es: [
@@ -238,7 +238,7 @@ const faqTranslations: Record<Exclude<Locale, "fr">, typeof faq> = {
     { question: "Que medios de pago aceptan?", answer: "El pago puede organizarse segun el trayecto. La tarjeta bancaria esta prevista si es necesario, a confirmar en la reserva." },
     { question: "Puedo pedir presupuesto?", answer: "Si. El formulario permite pedir un presupuesto claro, especialmente para aeropuertos, largas distancias y trayectos profesionales." },
     { question: "Ofrecen trayectos profesionales?", answer: "Si, acompanamos a empresas para trayectos puntuales o recurrentes, con posibilidad de factura." },
-    { question: "Puedo reservar para varias personas?", answer: "Si. Elija Taxi hasta 4 pasajeros o Taxi Van hasta 8 pasajeros." },
+    { question: "Puedo reservar para varias personas?", answer: "Si. Elija Taxi hasta 6 pasajeros o Taxi Van hasta 8 pasajeros." },
     { question: "Como modificar o cancelar una solicitud?", answer: "Contactenos rapidamente por telefono o WhatsApp con los datos de su solicitud." }
   ],
   de: [
@@ -248,7 +248,7 @@ const faqTranslations: Record<Exclude<Locale, "fr">, typeof faq> = {
     { question: "Welche Zahlungsmethoden akzeptieren Sie?", answer: "Die Zahlung kann je nach Fahrt organisiert werden. Kartenzahlung ist bei Bedarf moglich und wird bei der Buchung bestatigt." },
     { question: "Kann ich ein Angebot anfragen?", answer: "Ja. Das Formular ermoglicht ein klares Angebot, besonders fur Flughafen, Langstrecken und Geschaftsfahrten." },
     { question: "Bieten Sie Geschaftsfahrten an?", answer: "Ja, wir begleiten Unternehmen bei einmaligen oder wiederkehrenden Fahrten, mit Rechnung wenn gewunscht." },
-    { question: "Kann ich fur mehrere Personen buchen?", answer: "Ja. Wahlen Sie Taxi bis 4 Fahrgaste oder Taxi Van bis 8 Fahrgaste." },
+    { question: "Kann ich fur mehrere Personen buchen?", answer: "Ja. Wahlen Sie Taxi bis 6 Fahrgaste oder Taxi Van bis 8 Fahrgaste." },
     { question: "Wie kann ich eine Anfrage andern oder stornieren?", answer: "Kontaktieren Sie uns schnell telefonisch oder per WhatsApp mit den Details Ihrer Anfrage." }
   ]
 };
